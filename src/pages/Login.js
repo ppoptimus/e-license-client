@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
 
-import useScript from '../../components/useScript';
+import useScript from '../helper/useScript';
 
 import jQuery from 'jquery';
 import $ from 'jquery';

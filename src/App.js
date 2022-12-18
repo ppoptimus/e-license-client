@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import { useEffect, useState } from 'react';
-import { Routes, Route, useLocation, useParams } from 'react-router-dom';
+import React, { Component } from "react";
+import { useEffect, useState } from "react";
+import { Routes, Route, useLocation, useParams } from "react-router-dom";
 
-import Layout from "./components/Layout";
-import About from './app/pages/About';
-import Dashboard from './app/pages/Dashboard';
-import Login from './app/pages/Login';
-import useToken from './app/useToken';
+import Layout from "./Layout";
 
-import { matchRoutes } from "react-router-dom"
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import useToken from "./helper/useToken";
 
-const routes = [{ path: "/login" }]
+import { matchRoutes } from "react-router-dom";
+
+const routes = [{ path: "/login" }];
 
 const useCurrentPath = () => {
-  const location = useLocation()
-  const [{ route }] = matchRoutes(routes, location)
+  const location = useLocation();
+  const [{ route }] = matchRoutes(routes, location);
 
-  return route.path
-}
+  return route.path;
+};
 /*
 function setToken(userToken) {
   sessionStorage.setItem('token', JSON.stringify(userToken));
@@ -32,37 +32,29 @@ function getToken() {
 function App() {
   //const token = getToken();
 
-  const [login, setLogin] = useState(false)
+  const [login, setLogin] = useState(false);
 
   useEffect(() => {
+    document.body.classList.remove("bg-body");
 
-    
-    document.body.classList.remove('bg-body');
-
-    if (document.body.classList.contains('bg-body')) {
-      console.log('body tag contains class');
+    if (document.body.classList.contains("bg-body")) {
+      console.log("body tag contains class");
     }
-
   }, []);
-
 
   const { token, setToken } = useToken();
 
   if (token) {
-    return <Login setToken={setToken} />
-  } 
+    return <Login setToken={setToken} />;
+  }
 
   return (
-
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={(<Dashboard />)} />
-        <Route path="/about" element={(<About />)} />
+        <Route path="/" element={<Dashboard />} />
       </Route>
-      <Route path="/login" element={(<Login />) } />
-
+      <Route path="/login" element={<Login />} />
     </Routes>
-
   );
 }
 
