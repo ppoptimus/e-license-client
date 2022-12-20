@@ -40,7 +40,7 @@ export default function SideBar() {
               <li className="nav-item">
                 <a
                   className="nav-link menu-link"
-                  href="#"
+                  href="/requestlicense"
                   role="button"
                   aria-expanded="false"
                   aria-controls="sidebarTables"
@@ -62,14 +62,12 @@ export default function SideBar() {
                 <div className="collapse menu-dropdown" id="sidebarLicencs">
                   <ul className="nav nav-sm flex-column">
                     <li className="nav-item">
-                      <a href="#" className="nav-link" data-key="t-analytics">
-                        {" "}
+                      <a href="/renewlicense" className="nav-link" data-key="t-analytics">
                         ต่ออายุใบอนุญาต{" "}
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a href="#" className="nav-link" data-key="t-crm">
-                        {" "}
+                      <a href="/cencellicense" className="nav-link" data-key="t-crm">
                         ยกเลิกใบอนุญาต{" "}
                       </a>
                     </li>

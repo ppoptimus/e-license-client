@@ -15,21 +15,21 @@ window.jQuery = jQuery;
 const Layout = ({ children }) => {
   useEffect(() => {}, []);
 
-  useScript("/assets/js/app.js");
+  useScript("e-license/assets/js/app.js");
   return (
     <React.Fragment>
-      <>
-        <div id="layout-wrapper">
-          <Header />
-          <SideBar />
-          <div className="vertical-overlay" />
-          <div className="main-content">
+      <div id="layout-wrapper">
+        <Header />
+        <SideBar />
+        <div className="vertical-overlay" />
+        <div className="main-content">
+          <div className="page-content">
             <Outlet />
             <main>{children}</main>
-          <Footer />
+            <Footer />
           </div>
         </div>
-      </>
+      </div>
     </React.Fragment>
   );
 };

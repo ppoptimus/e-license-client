@@ -9,6 +9,9 @@ import Login from "./pages/Login";
 import useToken from "./helper/useToken";
 
 import { matchRoutes } from "react-router-dom";
+import { RequestLicense } from "./pages/License/RequestLicense";
+import { RenewLicense } from "./pages/License/RenewLicense";
+import { CancelLicense } from "./pages/License/CancelLicense";
 
 const routes = [{ path: "/login" }];
 
@@ -52,6 +55,9 @@ function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/requestlicense" element={<RequestLicense />} />
+        <Route path="/renewlicense" element={<RenewLicense />} />
+        <Route path="/cencellicense" element={<CancelLicense />} />
       </Route>
       <Route path="/login" element={<Login />} />
     </Routes>
