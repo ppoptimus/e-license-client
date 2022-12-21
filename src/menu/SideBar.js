@@ -1,6 +1,8 @@
 import React from "react";
 
 export default function SideBar() {
+  const logo = process.env.PUBLIC_URL + "/assets/images/logo.png"
+  console.log(logo)
   return (
     <>
       <div className="app-menu navbar-menu">
@@ -9,19 +11,19 @@ export default function SideBar() {
           {/* Dark Logo*/}
           <a href="index.html" className="logo logo-dark">
             <span className="logo-sm">
-              <img src="assets/images/logo.png" alt="" height="22" />
+              <img src={logo} alt="" height="22" />
             </span>
             <span className="logo-lg">
-              <img src="assets/images/logo.png" alt="" height="40" />
+              <img src={logo} alt="" height="40" />
             </span>
           </a>
           {/* Light Logo*/}
           <a href="index.html" className="logo logo-light">
             <span className="logo-sm">
-              <img src="assets/images/logo.png" alt="" height="22" />
+              <img src={logo} alt="" height="22" />
             </span>
             <span className="logo-lg">
-              <img src="assets/images/logo.png" alt="" height="100" />
+              <img src={logo} alt="" height="100" />
             </span>
           </a>
           <button

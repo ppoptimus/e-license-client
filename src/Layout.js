@@ -15,7 +15,8 @@ window.jQuery = jQuery;
 const Layout = ({ children }) => {
   useEffect(() => {}, []);
 
-  useScript("e-license/assets/js/app.js");
+  useScript(process.env.PUBLIC_URL + "/assets/js/app.js");
+
   return (
     <React.Fragment>
       <div id="layout-wrapper">
