@@ -1,8 +1,31 @@
 import React from "react";
 
 export default function SideBar() {
-  const logo = process.env.PUBLIC_URL + "/assets/images/logo.png"
-  console.log(logo)
+  const logo = process.env.PUBLIC_URL + "/assets/images/logo.png";
+
+  const listMenu = [
+    {
+      level1menu1: "Registry",
+      data: [
+        {
+          level2menu1: "Registry1",
+        },
+        {
+          level2menu2: "Registry2",
+          data: [
+            {
+              level3menu1: "Registry2.2",
+            },
+          ],
+        },
+        ,
+        {
+          level2menu3: "Registry3",
+        },
+      ],
+    },
+  ];
+
   return (
     <>
       <div className="app-menu navbar-menu">
@@ -37,7 +60,6 @@ export default function SideBar() {
 
         <div data-simplebar="init" id="scrollbar" className="h-100">
           <div className="container-fluid">
-            
             <ul className="navbar-nav" id="navbar-nav">
               <li className="nav-item">
                 <a
@@ -76,62 +98,66 @@ export default function SideBar() {
                   </ul>
                 </div>
               </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link menu-link"
-                  href="#sidebarApps"
-                  data-bs-toggle="collapse"
-                  role="button"
-                  aria-expanded="false"
-                  aria-controls="sidebarApps"
-                >
-                  <i className="ri-todo-fill" /> <span data-key="">จัดการงานทะเบียน</span>
-                </a>
-                <div className="collapse menu-dropdown" id="sidebarApps">
-                  <ul className="nav nav-sm flex-column">
-                    <li className="nav-item">
-                      <a
-                        href="#sidebarEmail"
-                        className="nav-link"
-                        data-bs-toggle="collapse"
-                        role="button"
-                        aria-expanded="false"
-                        aria-controls="sidebarEmail"
-                        data-key="t-email"
-                      >
-                        Level1
-                      </a>
-                      <div className="collapse menu-dropdown" id="sidebarEmail">
-                        <ul className="nav nav-sm flex-column">
-                          <li className="nav-item">
-                            <a
-                              href="#sidebaremailTemplates"
-                              className="nav-link"
-                              data-bs-toggle="collapse"
-                              role="button"
-                              aria-expanded="false"
-                              aria-controls="sidebaremailTemplates"
-                              data-key="t-email-templates"
-                            >
-                              Level2
-                            </a>
-                            <div className="collapse menu-dropdown" id="sidebaremailTemplates">
-                              <ul className="nav nav-sm flex-column">
-                                <li className="nav-item">
-                                  <a href="apps-email-basic.html" className="nav-link" data-key="t-basic-action">
-                                    {" "}
-                                    Level3{" "}
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </li>
+              {listMenu ? (
+                <li className="nav-item">
+                  <a
+                    className="nav-link menu-link"
+                    href="#sidebarApps"
+                    data-bs-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="sidebarApps"
+                  >
+                    <i className="ri-todo-fill" /> <span data-key="">จัดการงานทะเบียน</span>
+                  </a>
+                  <div className="collapse menu-dropdown" id="sidebarApps">
+                    <ul className="nav nav-sm flex-column">
+                      <li className="nav-item">
+                        <a
+                          href="#sidebarEmail"
+                          className="nav-link"
+                          data-bs-toggle="collapse"
+                          role="button"
+                          aria-expanded="false"
+                          aria-controls="sidebarEmail"
+                          data-key="t-email"
+                        >
+                          Level1
+                        </a>
+                        <div className="collapse menu-dropdown" id="sidebarEmail">
+                          <ul className="nav nav-sm flex-column">
+                            <li className="nav-item">
+                              <a
+                                href="#sidebaremailTemplates"
+                                className="nav-link"
+                                data-bs-toggle="collapse"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="sidebaremailTemplates"
+                                data-key="t-email-templates"
+                              >
+                                Level2
+                              </a>
+                              <div className="collapse menu-dropdown" id="sidebaremailTemplates">
+                                <ul className="nav nav-sm flex-column">
+                                  <li className="nav-item">
+                                    <a href="apps-email-basic.html" className="nav-link" data-key="t-basic-action">
+                                      {" "}
+                                      Level3{" "}
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              ) : (
+                ""
+              )}
 
               <li className="nav-item">
                 <a

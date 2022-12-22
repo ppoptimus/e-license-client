@@ -39,6 +39,7 @@ export default class Header extends Component {
       }
     };
 
+    const logo = process.env.PUBLIC_URL + "/assets/images/logo.png"
     return (
       <>
         <header id="page-topbar">
@@ -49,19 +50,19 @@ export default class Header extends Component {
                 <div className="navbar-brand-box horizontal-logo">
                   <a href="index.html" className="logo logo-dark">
                     <span className="logo-sm">
-                      <img src="assets/images/logo.png" alt="" height="22" />
+                      <img src={logo} alt="" height="22" />
                     </span>
                     <span className="logo-lg">
-                      <img src="assets/images/logo.png" alt="" height="70" />
+                      <img src={logo} alt="" height="70" />
                     </span>
                   </a>
 
                   <a href="index.html" className="logo logo-light">
                     <span className="logo-sm">
-                      <img src="assets/images/logo.png" alt="" height="22" />
+                      <img src={logo} alt="" height="22" />
                     </span>
                     <span className="logo-lg">
-                      <img src="assets/images/logo.png" alt="" height="17" />
+                      <img src={logo} alt="" height="17" />
                     </span>
                   </a>
                 </div>
