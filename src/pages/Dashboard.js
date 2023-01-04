@@ -21,7 +21,7 @@ const Dashboard = () => {
 
                                 <div className="page-title-right">
                                     <ol className="breadcrumb m-0">
-                                        <li className="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a></li>
+                                        <li className="breadcrumb-item"><a href="#">Dashboards</a></li>
                                         <li className="breadcrumb-item active">Dashboard</li>
                                     </ol>
                                 </div>
@@ -43,7 +43,7 @@ const Dashboard = () => {
                                                 <p className="text-muted mb-0">Here's what's happening with your store today.</p>
                                             </div>
                                             <div className="mt-3 mt-lg-0">
-                                                <form action="javascript:void(0);">
+                                                <form action="">
                                                     <div className="row g-3 mb-0 align-items-center">
                                                         <div className="col-sm-auto">
                                                             <div className="input-group">
@@ -965,7 +965,7 @@ const Dashboard = () => {
                                                     </div>
                                                     <div className="flex-grow-1 ms-3">
                                                         <h6 className="mb-1 lh-base">Flash sale starting <span className="text-primary">Tomorrow.</span></h6>
-                                                        <p className="text-muted mb-0">Flash sale by <a href="javascript:void(0);" className="link-secondary fw-medium">Zoetic Fashion</a></p>
+                                                        <p className="text-muted mb-0">Flash sale by <a href="#" className="link-secondary fw-medium">Zoetic Fashion</a></p>
                                                         <small className="mb-0 text-muted">22 Oct, 2021</small>
                                                     </div>
                                                 </div>
@@ -979,7 +979,7 @@ const Dashboard = () => {
                                                     </div>
                                                     <div className="flex-grow-1 ms-3">
                                                         <h6 className="mb-1 lh-base">Monthly sales report</h6>
-                                                        <p className="text-muted mb-2"><span className="text-danger">2 days left</span> notification to submit the monthly sales report. <a href="javascript:void(0);" className="link-warning text-decoration-underline">Reports Builder</a></p>
+                                                        <p className="text-muted mb-2"><span className="text-danger">2 days left</span> notification to submit the monthly sales report. <a href="#" className="link-warning text-decoration-underline">Reports Builder</a></p>
                                                         <small className="mb-0 text-muted">15 Oct</small>
                                                     </div>
                                                 </div>
@@ -1033,7 +1033,7 @@ const Dashboard = () => {
                                                 </li>
                                             </ol>
                                             <div className="mt-3 text-center">
-                                                <a href="javascript:void(0);" className="text-muted text-decoration-underline">View all Categories</a>
+                                                <a href="#" className="text-muted text-decoration-underline">View all Categories</a>
                                             </div>
                                         </div>
                                         <div className="p-3">

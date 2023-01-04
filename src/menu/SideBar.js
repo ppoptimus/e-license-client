@@ -5,12 +5,16 @@ export default function SideBar() {
 
   const listMenu = [
     {
+      key:1,
       level1menu1: "Registry",
       data: [
         {
+          key:1,
           level2menu1: "Registry1",
+          data:[]
         },
         {
+          key:2,
           level2menu2: "Registry2",
           data: [
             {
@@ -20,11 +24,15 @@ export default function SideBar() {
         },
         ,
         {
-          level2menu3: "Registry3",
+          key:3,
+          level2menu3: "Registry2",
+          data: [],
         },
       ],
     },
   ];
+
+  console.table(listMenu)
 
   return (
     <>
@@ -98,8 +106,9 @@ export default function SideBar() {
                   </ul>
                 </div>
               </li>
-              {listMenu ? (
-                <li className="nav-item">
+              {listMenu ? listMenu.map((i)=>(
+
+                <li className="nav-item" key={i.key}>
                   <a
                     className="nav-link menu-link"
                     href="#sidebarApps"
@@ -108,8 +117,9 @@ export default function SideBar() {
                     aria-expanded="false"
                     aria-controls="sidebarApps"
                   >
-                    <i className="ri-todo-fill" /> <span data-key="">จัดการงานทะเบียน</span>
+                    <i className="ri-todo-fill" /> <span>{i.level1menu1}</span>
                   </a>
+                  
                   <div className="collapse menu-dropdown" id="sidebarApps">
                     <ul className="nav nav-sm flex-column">
                       <li className="nav-item">
@@ -119,10 +129,9 @@ export default function SideBar() {
                           data-bs-toggle="collapse"
                           role="button"
                           aria-expanded="false"
-                          aria-controls="sidebarEmail"
-                          data-key="t-email"
+                          aria-controls="sidebarEmail"                        
                         >
-                          Level1
+                          {i.data[0].level2menu1}
                         </a>
                         <div className="collapse menu-dropdown" id="sidebarEmail">
                           <ul className="nav nav-sm flex-column">
@@ -155,6 +164,8 @@ export default function SideBar() {
                     </ul>
                   </div>
                 </li>
+              )
+                
               ) : (
                 ""
               )}

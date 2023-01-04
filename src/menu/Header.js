@@ -219,24 +219,7 @@ export default class Header extends Component {
                   </button>
                   <div className="dropdown-menu dropdown-menu-end">
                     {/* item*/}
-                    <h6 className="dropdown-header">Welcome Anna!</h6>
-                    <a className="dropdown-item" href="pages-profile.html">
-                      <i className="mdi mdi-account-circle text-muted fs-16 align-middle me-1" />{" "}
-                      <span className="align-middle">Profile</span>
-                    </a>
-                    <a className="dropdown-item" href="apps-chat.html">
-                      <i className="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1" />{" "}
-                      <span className="align-middle">Messages</span>
-                    </a>
-                    <a className="dropdown-item" href="apps-tasks-kanban.html">
-                      <i className="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1" />{" "}
-                      <span className="align-middle">Taskboard</span>
-                    </a>
-                    <a className="dropdown-item" href="pages-faqs.html">
-                      <i className="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1" />{" "}
-                      <span className="align-middle">Help</span>
-                    </a>
-                    <div className="dropdown-divider" />
+                   
                     <a className="dropdown-item" href="pages-profile.html">
                       <i className="mdi mdi-wallet text-muted fs-16 align-middle me-1" />{" "}
                       <span className="align-middle">

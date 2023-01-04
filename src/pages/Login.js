@@ -32,7 +32,7 @@ export default function Login({ setToken }) {
             username,
             password
         });
-        setToken(token);
+        // setToken(token);
         if (token) {
             //navigate("/");
             navigate(0);
@@ -200,6 +200,6 @@ export default function Login({ setToken }) {
     )
 
 }
-Login.propTypes = {
-    setToken: PropTypes.func.isRequired
-};
+// Login.propTypes = {
+//     setToken: PropTypes.func.isRequired
+// };
