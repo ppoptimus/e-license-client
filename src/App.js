@@ -12,6 +12,7 @@ import { matchRoutes } from "react-router-dom";
 import { RequestLicense } from "./pages/License/RequestLicense";
 import { RenewLicense } from "./pages/License/RenewLicense";
 import { CancelLicense } from "./pages/License/CancelLicense";
+import { ChooseLicense } from "./pages/ChooseLicense";
 
 const routes = [{ path: "/login" }];
 
@@ -47,8 +48,9 @@ function App() {
 
   const { token, setToken } = useToken();
 
-  if (token) {
+  if (!token) {
     return <Login setToken={setToken} />;
+    return <ChooseLicense/>
   }
 
   return (

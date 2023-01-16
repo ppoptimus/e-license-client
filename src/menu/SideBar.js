@@ -1,38 +1,39 @@
 import React from "react";
 
 export default function SideBar() {
-  const logo = process.env.PUBLIC_URL + "/assets/images/logo.png";
+  const PUBLIC_URL = process.env.PUBLIC_URL;
+  const logo = PUBLIC_URL + "/assets/images/logo.png";
 
   const listMenu = [
     {
-      key:1,
-      level1menu1: "Registry",
+      key: 1,
+      level0: "RegistryLevel0",
       data: [
         {
-          key:1,
-          level2menu1: "Registry1",
-          data:[]
+          key: 1,
+          level1: "Registry1",
+          data: [],
         },
         {
-          key:2,
-          level2menu2: "Registry2",
+          key: 2,
+          level1: "Registry2",
           data: [
             {
-              level3menu1: "Registry2.2",
+              key:1,
+              level2: "Registry2.2",
             },
           ],
         },
-        ,
         {
-          key:3,
-          level2menu3: "Registry2",
+          key: 3,
+          level1: "Registry3",
           data: [],
         },
       ],
     },
   ];
 
-  console.table(listMenu)
+  console.log(listMenu);
 
   return (
     <>
@@ -68,7 +69,8 @@ export default function SideBar() {
 
         <div data-simplebar="init" id="scrollbar" className="h-100">
           <div className="container-fluid">
-            <ul className="navbar-nav" id="navbar-nav">
+            {listMenu.map((i) => (
+            <ul className="navbar-nav" id="navbar-nav" key={i.key}>
               <li className="nav-item">
                 <a
                   className="nav-link menu-link"
@@ -80,6 +82,7 @@ export default function SideBar() {
                   <i className="ri-draft-fill" /> <span>ขอใบอนุญาต</span>
                 </a>
               </li>
+              {/* ---------------------------------- */}
               <li className="nav-item">
                 <a
                   className="nav-link menu-link"
@@ -106,9 +109,10 @@ export default function SideBar() {
                   </ul>
                 </div>
               </li>
-              {listMenu ? listMenu.map((i)=>(
+              {/* ---------------------------------- */}
 
-                <li className="nav-item" key={i.key}>
+              
+                <li className="nav-item">
                   <a
                     className="nav-link menu-link"
                     href="#sidebarApps"
@@ -117,11 +121,13 @@ export default function SideBar() {
                     aria-expanded="false"
                     aria-controls="sidebarApps"
                   >
-                    <i className="ri-todo-fill" /> <span>{i.level1menu1}</span>
+                    <i className="ri-todo-fill" /> <span>{i.level0}</span>
                   </a>
-                  
+
                   <div className="collapse menu-dropdown" id="sidebarApps">
-                    <ul className="nav nav-sm flex-column">
+                    {i.data.map((ii)=>(
+
+                    <ul className="nav nav-sm flex-column" key={ii.key}>
                       <li className="nav-item">
                         <a
                           href="#sidebarEmail"
@@ -129,47 +135,47 @@ export default function SideBar() {
                           data-bs-toggle="collapse"
                           role="button"
                           aria-expanded="false"
-                          aria-controls="sidebarEmail"                        
+                          aria-controls="sidebarEmail"
                         >
-                          {i.data[0].level2menu1}
+                          {ii.level1}
                         </a>
                         <div className="collapse menu-dropdown" id="sidebarEmail">
-                          <ul className="nav nav-sm flex-column">
+                          {ii.data.map((iii)=>(
+
+                          <ul className="nav nav-sm flex-column" key={iii.key}>
                             <li className="nav-item">
                               <a
                                 href="#sidebaremailTemplates"
                                 className="nav-link"
-                                data-bs-toggle="collapse"
+                                // data-bs-toggle="collapse"
                                 role="button"
                                 aria-expanded="false"
                                 aria-controls="sidebaremailTemplates"
-                                data-key="t-email-templates"
+                                data-key=""
                               >
-                                Level2
+                                {iii.level2}
                               </a>
-                              <div className="collapse menu-dropdown" id="sidebaremailTemplates">
+                              {/* <div className="collapse menu-dropdown" id="sidebaremailTemplates">
                                 <ul className="nav nav-sm flex-column">
                                   <li className="nav-item">
                                     <a href="apps-email-basic.html" className="nav-link" data-key="t-basic-action">
-                                      {" "}
-                                      Level3{" "}
+                                      Level3
                                     </a>
                                   </li>
                                 </ul>
-                              </div>
+                              </div> */}
                             </li>
                           </ul>
+                          ))}
                         </div>
                       </li>
                     </ul>
+                    ))}
                   </div>
                 </li>
-              )
-                
-              ) : (
-                ""
-              )}
+              
 
+              {/* ---------------------------------- */}
               <li className="nav-item">
                 <a
                   className="nav-link menu-link"
@@ -201,7 +207,7 @@ export default function SideBar() {
                   </ul>
                 </div>
               </li>
-
+              {/* ---------------------------------- */}
               <li className="nav-item">
                 <a
                   className="nav-link menu-link"
@@ -214,6 +220,7 @@ export default function SideBar() {
                 </a>
               </li>
             </ul>
+            ))}
           </div>
           {/* Sidebar */}
         </div>
