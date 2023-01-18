@@ -48,18 +48,19 @@ function App() {
 
   const { token, setToken } = useToken();
 
-  if (!token) {
+  if (token) {
     return <Login setToken={setToken} />;
-    return <ChooseLicense/>
   }
 
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/chooseLicense" element={<ChooseLicense />} />
         <Route path="/requestlicense" element={<RequestLicense />} />
         <Route path="/renewlicense" element={<RenewLicense />} />
         <Route path="/cencellicense" element={<CancelLicense />} />
+        
       </Route>
       <Route path="/login" element={<Login />} />
     </Routes>

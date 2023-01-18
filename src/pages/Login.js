@@ -32,10 +32,11 @@ export default function Login({ setToken }) {
       username,
       password,
     });
+    token = true;
     // setToken(token);
     if (token) {
-      //navigate("/");
-      navigate(0);
+      navigate("/");
+      // navigate(0);
     }
   };
 
@@ -157,7 +158,7 @@ export default function Login({ setToken }) {
                             </div>
 
                             <div className="mt-4">
-                              <button className="btn btn-success w-100" type="submit">
+                              <button className="btn btn-success w-100" type="submit" onClick={handleSubmit}>
                                 เข้าระบบ
                               </button>
                             </div>

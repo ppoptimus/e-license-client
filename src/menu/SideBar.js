@@ -7,26 +7,27 @@ export default function SideBar() {
   const listMenu = [
     {
       key: 1,
-      level0: "RegistryLevel0",
+      level0: "จัดการงานทะเบียน",
       data: [
         {
           key: 1,
-          level1: "Registry1",
+          level1: "งานทะเบียนย่อย1",
+          href:"#href1",
+          controls:"controls1",
           data: [],
         },
         {
           key: 2,
-          level1: "Registry2",
-          data: [
-            {
-              key:1,
-              level2: "Registry2.2",
-            },
-          ],
+          level1: "งานทะเบียนย่อย2",
+          href:"#href2",
+          controls:"controls1",
+          data: [],
         },
         {
           key: 3,
-          level1: "Registry3",
+          level1: "งานทะเบียนย่อย3",
+          href:"#href3",
+          controls:"controls1",
           data: [],
         },
       ],
@@ -74,7 +75,7 @@ export default function SideBar() {
               <li className="nav-item">
                 <a
                   className="nav-link menu-link"
-                  href="/requestlicense"
+                  href="/e-license/chooseLicense"
                   role="button"
                   aria-expanded="false"
                   aria-controls="sidebarTables"
@@ -97,12 +98,12 @@ export default function SideBar() {
                 <div className="collapse menu-dropdown" id="sidebarLicencs">
                   <ul className="nav nav-sm flex-column">
                     <li className="nav-item">
-                      <a href="/renewlicense" className="nav-link" data-key="t-analytics">
+                      <a href="/e-license/renewlicense" className="nav-link" data-key="t-analytics">
                         ต่ออายุใบอนุญาต{" "}
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a href="/cencellicense" className="nav-link" data-key="t-crm">
+                      <a href="/e-license/cencellicense" className="nav-link" data-key="t-crm">
                         ยกเลิกใบอนุญาต{" "}
                       </a>
                     </li>
@@ -130,16 +131,16 @@ export default function SideBar() {
                     <ul className="nav nav-sm flex-column" key={ii.key}>
                       <li className="nav-item">
                         <a
-                          href="#sidebarEmail"
+                          href={ii.href}
                           className="nav-link"
                           data-bs-toggle="collapse"
                           role="button"
                           aria-expanded="false"
-                          aria-controls="sidebarEmail"
+                          aria-controls={ii.controls}
                         >
                           {ii.level1}
                         </a>
-                        <div className="collapse menu-dropdown" id="sidebarEmail">
+                        <div className="collapse menu-dropdown" id={ii.controls}>
                           {ii.data.map((iii)=>(
 
                           <ul className="nav nav-sm flex-column" key={iii.key}>
