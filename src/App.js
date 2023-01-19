@@ -12,7 +12,8 @@ import { matchRoutes } from "react-router-dom";
 import { RequestLicense } from "./pages/License/RequestLicense";
 import { RenewLicense } from "./pages/License/RenewLicense";
 import { CancelLicense } from "./pages/License/CancelLicense";
-import { ChooseLicense } from "./pages/ChooseLicense";
+import { ChooseLicense } from "./pages/License/ChooseLicense";
+import { ForeignLabor } from "./pages/License/LicenseType/ForeignLabor";
 
 const routes = [{ path: "/login" }];
 
@@ -55,12 +56,12 @@ function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<ChooseLicense />} />
         <Route path="/chooseLicense" element={<ChooseLicense />} />
         <Route path="/requestlicense" element={<RequestLicense />} />
         <Route path="/renewlicense" element={<RenewLicense />} />
         <Route path="/cencellicense" element={<CancelLicense />} />
-        
+        <Route path="/foreign" element={<ForeignLabor />} />
       </Route>
       <Route path="/login" element={<Login />} />
     </Routes>

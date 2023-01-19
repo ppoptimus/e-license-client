@@ -1,8 +1,15 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 export const ChooseLicense = () => {
   const exports = process.env.PUBLIC_URL + "/assets/images/flight-takeoff.svg";
   const imports = process.env.PUBLIC_URL + "/assets/images/flight-land.svg";
+  const navigate = useNavigate();
+
+  const onClickForeign = () => {
+    navigate('/foreign')
+    console.log("Foreign")
+  }
   return (
     <>
       <div className="container-fluid">
@@ -27,8 +34,8 @@ export const ChooseLicense = () => {
 
         <div className="row">
           <div className="col-xl-6">
-            <a href="cert/cert-1.html">
-              <div className="card">
+            
+              <div className="card cursor-pointer" onClick={onClickForeign}>
                 <div className="card-body">
                   <div className="d-flex position-relative">
                     <div className=" avatar-xl text-primary rounded" style={{ fontSize: 60 }}>
@@ -43,7 +50,7 @@ export const ChooseLicense = () => {
                   </div>
                 </div>
               </div>
-            </a>
+            
           </div>
           <div className="col-xl-6">
             <a href="cert/cert-2.html">
