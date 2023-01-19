@@ -22,7 +22,7 @@ export const ChooseLicense = () => {
               <div className="page-title-right">
                 <ol className="breadcrumb m-0">
                   <li className="breadcrumb-item">
-                    <a href="javascript: void(0);">Pages</a>
+                    <a href="#">Pages</a>
                   </li>
                   <li className="breadcrumb-item active">รายการคำขอใบอนุญาต</li>
                 </ol>

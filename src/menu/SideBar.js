@@ -11,30 +11,100 @@ export default function SideBar() {
       data: [
         {
           key: 1,
-          level1: "งานทะเบียนย่อย1",
-          href:"#href1",
-          controls:"controls1",
+          level1: "คำขอใบแทนใบอนุญาตฯ",
+          href: "#href1",
+          controls: "controls1",
           data: [],
         },
         {
           key: 2,
-          level1: "งานทะเบียนย่อย2",
-          href:"#href2",
-          controls:"controls1",
+          level1: "แจ้งย้ายสำนักงาน",
+          href: "#href2",
+          controls: "controls1",
           data: [],
         },
         {
           key: 3,
-          level1: "งานทะเบียนย่อย3",
-          href:"#href3",
-          controls:"controls1",
+          level1: "คำขอตั้งสำนักงานชั่วคราว",
+          href: "#href3",
+          controls: "controls1",
+          data: [],
+        },
+        {
+          key: 4,
+          level1: "แจ้งเปลี่ยนผู้จัดการ",
+          href: "#href4",
+          controls: "controls4",
+          data: [],
+        },
+        {
+          key: 5,
+          level1: "ขอหนังสือรับรองภาษาอังกฤษ",
+          href: "#href5",
+          controls: "controls5",
+          data: [],
+        },
+        {
+          key: 6,
+          level1: "ขอเปลี่ยนชื่อนิติบุคคล",
+          href: "#href6",
+          controls: "controls6",
+          data: [],
+        },
+        {
+          key: 7,
+          level1: "เปลี่ยนตราประทับนิติบุคคล",
+          href: "#href7",
+          controls: "controls7",
+          data: [],
+        },
+        {
+          key: 8,
+          level1: "คำขอแจ้งข้อความโฆษณา",
+          href: "#href8",
+          controls: "controls8",
           data: [],
         },
       ],
     },
+    {
+      key: 2,
+      level0: "ผู้จัดการ ลูกจ้าง ตัวแทน",
+      data: [
+        {
+          key: 1,
+          level1: "คำขอจดทะเบียนลูกจ้าง / ตัวแทน",
+          href: "#href1",
+          controls: "controls1",
+          data: [],
+        },
+        {
+          key: 2,
+          level1: "คำขอเปลี่ยนชื่อผู้จัดการ",
+          href: "#href2",
+          controls: "controls1",
+          data: [],
+        },
+        {
+          key: 3,
+          level1: "ขอยกเลิกลูกจ้าง / ตัวแทน",
+          href: "#href3",
+          controls: "controls1",
+          data: [],
+        },
+        {
+          key: 4,
+          level1: "คำขอมีบัตรประจำตัว",
+          href: "#href4",
+          controls: "controls4",
+          data: [],
+        },
+        
+      ],
+    },
   ];
 
-  console.log(listMenu);
+  console.log(listMenu[0].data[0].data.length);
 
   return (
     <>
@@ -70,8 +140,7 @@ export default function SideBar() {
 
         <div data-simplebar="init" id="scrollbar" className="h-100">
           <div className="container-fluid">
-            {listMenu.map((i) => (
-            <ul className="navbar-nav" id="navbar-nav" key={i.key}>
+            <ul className="navbar-nav" id="navbar-nav">
               <li className="nav-item">
                 <a
                   className="nav-link menu-link"
@@ -98,12 +167,12 @@ export default function SideBar() {
                 <div className="collapse menu-dropdown" id="sidebarLicencs">
                   <ul className="nav nav-sm flex-column">
                     <li className="nav-item">
-                      <a href="/e-license/renewlicense" className="nav-link" data-key="t-analytics">
+                      <a href="/e-license/renewlicense" className="nav-link" data-key="">
                         ต่ออายุใบอนุญาต{" "}
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a href="/e-license/cencellicense" className="nav-link" data-key="t-crm">
+                      <a href="/e-license/cencellicense" className="nav-link" data-key="">
                         ยกเลิกใบอนุญาต{" "}
                       </a>
                     </li>
@@ -112,8 +181,8 @@ export default function SideBar() {
               </li>
               {/* ---------------------------------- */}
 
-              
-                <li className="nav-item">
+              {listMenu.map((i) => (
+                <li className="nav-item" key={i.key}>
                   <a
                     className="nav-link menu-link"
                     href="#sidebarApps"
@@ -126,55 +195,25 @@ export default function SideBar() {
                   </a>
 
                   <div className="collapse menu-dropdown" id="sidebarApps">
-                    {i.data.map((ii)=>(
-
-                    <ul className="nav nav-sm flex-column" key={ii.key}>
-                      <li className="nav-item">
-                        <a
-                          href={ii.href}
-                          className="nav-link"
-                          data-bs-toggle="collapse"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls={ii.controls}
-                        >
-                          {ii.level1}
-                        </a>
-                        <div className="collapse menu-dropdown" id={ii.controls}>
-                          {ii.data.map((iii)=>(
-
-                          <ul className="nav nav-sm flex-column" key={iii.key}>
-                            <li className="nav-item">
-                              <a
-                                href="#sidebaremailTemplates"
-                                className="nav-link"
-                                // data-bs-toggle="collapse"
-                                role="button"
-                                aria-expanded="false"
-                                aria-controls="sidebaremailTemplates"
-                                data-key=""
-                              >
-                                {iii.level2}
-                              </a>
-                              {/* <div className="collapse menu-dropdown" id="sidebaremailTemplates">
-                                <ul className="nav nav-sm flex-column">
-                                  <li className="nav-item">
-                                    <a href="apps-email-basic.html" className="nav-link" data-key="t-basic-action">
-                                      Level3
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div> */}
-                            </li>
-                          </ul>
-                          ))}
-                        </div>
-                      </li>
-                    </ul>
+                    {i.data.map((ii) => (
+                      <ul className="nav nav-sm flex-column" key={ii.key}>
+                        <li className="nav-item">
+                          <a
+                            href={ii.href}
+                            className="nav-link"
+                            data-bs-toggle={ii.data.length > 0 ? "collapse" : ""}
+                            role="button"
+                            aria-expanded="false"
+                            aria-controls={ii.controls}
+                          >
+                            {ii.level1}
+                          </a>
+                        </li>
+                      </ul>
                     ))}
                   </div>
                 </li>
-              
+              ))}
 
               {/* ---------------------------------- */}
               <li className="nav-item">
@@ -221,7 +260,6 @@ export default function SideBar() {
                 </a>
               </li>
             </ul>
-            ))}
           </div>
           {/* Sidebar */}
         </div>
