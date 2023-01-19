@@ -8,61 +8,71 @@ export default function SideBar() {
     {
       key: 1,
       level0: "จัดการงานทะเบียน",
+      id:"registry",
+      divhref:"#registry",
       data: [
         {
-          key: 1,
+          key: 11,
           level1: "คำขอใบแทนใบอนุญาตฯ",
-          href: "#href1",
-          controls: "controls1",
+   
+          href: "#href11",
+          controls: "controls11",
           data: [],
         },
         {
-          key: 2,
+          key: 12,
           level1: "แจ้งย้ายสำนักงาน",
-          href: "#href2",
-          controls: "controls1",
+        
+          href: "#href12",
+          controls: "controls12",
           data: [],
         },
         {
-          key: 3,
+          key: 13,
           level1: "คำขอตั้งสำนักงานชั่วคราว",
-          href: "#href3",
-          controls: "controls1",
+       
+          href: "#href13",
+          controls: "controls13",
           data: [],
         },
         {
-          key: 4,
+          key: 14,
           level1: "แจ้งเปลี่ยนผู้จัดการ",
-          href: "#href4",
-          controls: "controls4",
+      
+          href: "#href14",
+          controls: "controls14",
           data: [],
         },
         {
-          key: 5,
+          key: 15,
           level1: "ขอหนังสือรับรองภาษาอังกฤษ",
-          href: "#href5",
-          controls: "controls5",
+       
+          href: "#href15",
+          controls: "controls15",
           data: [],
         },
         {
-          key: 6,
+          key: 16,
           level1: "ขอเปลี่ยนชื่อนิติบุคคล",
-          href: "#href6",
-          controls: "controls6",
+        
+          href: "#href16",
+          controls: "controls16",
           data: [],
         },
         {
-          key: 7,
+          key: 17,
           level1: "เปลี่ยนตราประทับนิติบุคคล",
-          href: "#href7",
-          controls: "controls7",
+       
+          href: "#href17",
+          controls: "controls17",
           data: [],
         },
         {
-          key: 8,
+          key: 18,
           level1: "คำขอแจ้งข้อความโฆษณา",
-          href: "#href8",
-          controls: "controls8",
+       
+          href: "#href18",
+          controls: "controls18",
           data: [],
         },
       ],
@@ -70,33 +80,39 @@ export default function SideBar() {
     {
       key: 2,
       level0: "ผู้จัดการ ลูกจ้าง ตัวแทน",
+      id:"management",
+      divhref:"#management",
       data: [
         {
-          key: 1,
+          key: 21,
           level1: "คำขอจดทะเบียนลูกจ้าง / ตัวแทน",
-          href: "#href1",
-          controls: "controls1",
+
+          href: "#href21",
+          controls: "controls21",
           data: [],
         },
         {
-          key: 2,
+          key: 22,
           level1: "คำขอเปลี่ยนชื่อผู้จัดการ",
-          href: "#href2",
-          controls: "controls1",
+     
+          href: "#href22",
+          controls: "controls21",
           data: [],
         },
         {
-          key: 3,
+          key: 23,
           level1: "ขอยกเลิกลูกจ้าง / ตัวแทน",
-          href: "#href3",
-          controls: "controls1",
+      
+          href: "#href23",
+          controls: "controls23",
           data: [],
         },
         {
-          key: 4,
+          key: 24,
           level1: "คำขอมีบัตรประจำตัว",
-          href: "#href4",
-          controls: "controls4",
+        
+          href: "#href24",
+          controls: "controls24",
           data: [],
         },
         
@@ -185,16 +201,16 @@ export default function SideBar() {
                 <li className="nav-item" key={i.key}>
                   <a
                     className="nav-link menu-link"
-                    href="#sidebarApps"
+                    href={i.divhref}
                     data-bs-toggle="collapse"
                     role="button"
                     aria-expanded="false"
-                    aria-controls="sidebarApps"
+                    aria-controls={i.id}
                   >
                     <i className="ri-todo-fill" /> <span>{i.level0}</span>
                   </a>
 
-                  <div className="collapse menu-dropdown" id="sidebarApps">
+                  <div className="collapse menu-dropdown" id={i.id}>
                     {i.data.map((ii) => (
                       <ul className="nav nav-sm flex-column" key={ii.key}>
                         <li className="nav-item">
