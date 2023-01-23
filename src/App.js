@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { useEffect, useState } from "react";
 import { Routes, Route, useLocation, useParams } from "react-router-dom";
+import './App.css'
 
 import Layout from "./Layout";
-
-import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import useToken from "./helper/useToken";
 
@@ -14,6 +13,9 @@ import { RenewLicense } from "./pages/License/RenewLicense";
 import { CancelLicense } from "./pages/License/CancelLicense";
 import { ChooseLicense } from "./pages/License/ChooseLicense";
 import { ForeignLabor } from "./pages/License/LicenseType/ForeignLabor";
+import { ExportLabor } from "./pages/License/LicenseType/ExportLabor";
+import { ShipLabor } from "./pages/License/LicenseType/ShipLabor";
+import { DomesticLabor } from "./pages/License/LicenseType/DomesticLabor";
 
 const routes = [{ path: "/login" }];
 
@@ -62,6 +64,11 @@ function App() {
         <Route path="/renewlicense" element={<RenewLicense />} />
         <Route path="/cencellicense" element={<CancelLicense />} />
         <Route path="/foreign" element={<ForeignLabor />} />
+        <Route path="/domestics" element={<DomesticLabor />} />
+        <Route path="/exports" element={<ExportLabor />} />
+        <Route path="/ships" element={<ShipLabor />} />
+
+
       </Route>
       <Route path="/login" element={<Login />} />
     </Routes>
