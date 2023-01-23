@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import $ from "jquery";
 
+// import { Input } from "reactstrap";
+
 export const ForeignLabor = () => {
   useEffect(() => {
     jquerys();
@@ -38,7 +40,6 @@ export const ForeignLabor = () => {
   return (
     <>
       <div className="container-fluid">
-       
         <div className="row">
           <div className="col-xl-12">
             <div className="card">
@@ -148,8 +149,8 @@ export const ForeignLabor = () => {
                 </div>
 
                 <div className="tab-content">
-                  
-                  <div className="tab-pane fade show active"
+                  <div
+                    className="tab-pane fade show active"
                     id="datainfo1"
                     role="tabpanel"
                     aria-labelledby="datainfo1-tab"
@@ -166,9 +167,15 @@ export const ForeignLabor = () => {
                         <div className="col-lg-4">
                           <div className="mb-3">
                             <label className="form-label" htmlFor="steparrow-gen-info-email-input">
-                              เลขที่บุคคละรรมดา/นิติบุคคล
+                              เลขที่นิติบุคคล
                             </label>
-                            <input type="text" className="form-control" placeholder="" />
+                            {/* <input type="text" className="form-control" placeholder="Search..." /> */}
+                            <div className="search">
+                       
+                          <input type="text" className="form-control" placeholder="Search..." />
+                          <button className="btn btn-secondary p-0"><i className="ri-search-line" /></button>
+                        </div>
+
                           </div>
                         </div>
                         <div className="col-lg-4">
@@ -324,14 +331,14 @@ export const ForeignLabor = () => {
                             </div>
                             <div className="col-lg-8" style={{ padding: 15 }}>
                               <iframe
-                                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15496.059774239!2d100.51836289775781!3d13.838141159271867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29b61192065a3%3A0x13e1e4e5a96cf523!2z4Liq4Liz4LiZ4Lix4LiB4LiH4Liy4LiZ4Lib4Lij4Liw4LiB4Lix4LiZ4Liq4Lix4LiH4LiE4LihIOC4quC4s-C4meC4seC4geC4h-C4suC4meC5g-C4q-C4jeC5iA!5e0!3m2!1sth!2sth!4v1670395470923!5m2!1sth!2sth"
-                                  width="100%"
-                                  height="300"
-                                  style={{ border: "0" }}
-                                  allowFullScreen
-                                  loading="lazy"
-                                  referrerpolicy="no-referrer-when-downgrade"
-                                />
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15496.059774239!2d100.51836289775781!3d13.838141159271867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29b61192065a3%3A0x13e1e4e5a96cf523!2z4Liq4Liz4LiZ4Lix4LiB4LiH4Liy4LiZ4Lib4Lij4Liw4LiB4Lix4LiZ4Liq4Lix4LiH4LiE4LihIOC4quC4s-C4meC4seC4geC4h-C4suC4meC5g-C4q-C4jeC5iA!5e0!3m2!1sth!2sth!4v1670395470923!5m2!1sth!2sth"
+                                width="100%"
+                                height="300"
+                                style={{ border: "0" }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                              />
                             </div>
                           </div>
                         </div>
@@ -364,7 +371,7 @@ export const ForeignLabor = () => {
                                 </label>
                                 <input
                                   className="form-control d-none"
-                                  //   
+                                  //
                                   id="product-image-input"
                                   type="file"
                                   accept="image/png, image/gif, image/jpeg"
@@ -395,7 +402,7 @@ export const ForeignLabor = () => {
                                 </label>
                                 <input
                                   className="form-control d-none"
-                                  //   
+                                  //
                                   id="product-image-input"
                                   type="file"
                                   accept="image/png, image/gif, image/jpeg"
@@ -426,7 +433,7 @@ export const ForeignLabor = () => {
                                 </label>
                                 <input
                                   className="form-control d-none"
-                                  //   
+                                  //
                                   id="product-image-input"
                                   type="file"
                                   accept="image/png, image/gif, image/jpeg"
@@ -457,7 +464,7 @@ export const ForeignLabor = () => {
                                 </label>
                                 <input
                                   className="form-control d-none"
-                                  //   
+                                  //
                                   id="product-image-input"
                                   type="file"
                                   accept="image/png, image/gif, image/jpeg"
@@ -488,7 +495,7 @@ export const ForeignLabor = () => {
                                 </label>
                                 <input
                                   className="form-control d-none"
-                                  //   
+                                  //
                                   id="product-image-input"
                                   type="file"
                                   accept="image/png, image/gif, image/jpeg"
@@ -515,7 +522,7 @@ export const ForeignLabor = () => {
                       </button>
                     </div>
                   </div>
-               
+
                   <div className="tab-pane fade " id="datainfo2" role="tabpanel" aria-labelledby="datainfo2-tab">
                     <div className="row">
                       <div className="col-8 mb-4 mt-3">
@@ -621,7 +628,6 @@ export const ForeignLabor = () => {
                               </tr>
                             </tbody>
                           </table>
-                          
                         </div>
                       </div>
                     </div>
@@ -795,7 +801,7 @@ export const ForeignLabor = () => {
                                     <input
                                       className="form-check-input"
                                       type="checkbox"
-                                      //   
+                                      //
                                       id="responsivetableCheck"
                                     />
                                     <label className="form-check-label" htmlFor="responsivetableCheck" />
@@ -814,7 +820,7 @@ export const ForeignLabor = () => {
                                     <input
                                       className="form-check-input"
                                       type="checkbox"
-                                      //   
+                                      //
                                       id="responsivetableCheck01"
                                     />
                                     <label className="form-check-label" htmlFor="responsivetableCheck01" />
@@ -845,7 +851,7 @@ export const ForeignLabor = () => {
                                     <input
                                       className="form-check-input"
                                       type="checkbox"
-                                      //   
+                                      //
                                       id="responsivetableCheck01"
                                     />
                                     <label className="form-check-label" htmlFor="responsivetableCheck01" />
@@ -876,7 +882,7 @@ export const ForeignLabor = () => {
                                     <input
                                       className="form-check-input"
                                       type="checkbox"
-                                      //   
+                                      //
                                       id="responsivetableCheck01"
                                     />
                                     <label className="form-check-label" htmlFor="responsivetableCheck01" />
@@ -1132,7 +1138,6 @@ export const ForeignLabor = () => {
                       </button>
                     </div>
                   </div>
-                  
                 </div>
               </div>
             </div>
@@ -1140,350 +1145,532 @@ export const ForeignLabor = () => {
         </div>
       </div>
 
-      <><div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex={-1} role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="myLargeModalLabel">ข้อมูลกรรมการผู้มีอำนาจกระทำการแทนนิติบุคคลผู้ขอใบอนุญาติ</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
-                        </div>
-                        <div className="modal-body" style={{ textAlign: "left" }}>
-                            <div className="col-12 mt-3">
-                                <div>
-                                    <h5 className="mb-1"><b>ข้อมูลส่วนตัว</b></h5>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-lg-4">
-                                    <div className="mb-3" style={{ bottom: "0", position: "absolute" }}>
-                                        <label className="form-label" htmlFor="steparrow-gen-info-email-input">เลขบัตรประจำตัวประชาชน</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3" style={{ bottom: "0", position: "absolute" }}>
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">วัน/เดือน/ปีเกิด</label>
-                                        <input type="date" className="form-control" id="exampleInputdate" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="position-relative d-inline-block">
-                                        <div className="position-absolute top-100 start-100 translate-middle">
-                                            <label htmlFor="product-image-input" className="mb-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Select Image">
-                                                <div className="avatar-xs">
-                                                    <div className="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
-                                                        <i className="ri-image-fill" />
-                                                    </div>
-                                                </div>
-                                            </label>
-                                            <input className="form-control d-none"  id="product-image-input" type="file" accept="image/png, image/gif, image/jpeg" />
-                                        </div>
-                                        <div className="avatar-lg">
-                                            <div className="avatar-title bg-light rounded">
-                                                <img src="" id="product-img" className="avatar-md h-auto" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">เลขบัตรประจำตัวประชาชน</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-8">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">เพศ</label>
-                                        <div className="mt-4 mt-lg-0">
-                                            <div className="form-check form-check-inline">
-                                                <input className="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio1" value="option1" />
-                                                <label className="form-check-label" htmlFor="inlineRadio1">ชาย</label>
-                                            </div>
-                                            <div className="form-check form-check-inline">
-                                                <input className="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option2" />
-                                                <label className="form-check-label" htmlFor="inlineRadio2">หญิง</label>
-                                            </div>
-                                            <div className="form-check form-check-inline">
-                                                <input className="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio3" value="option3" />
-                                                <label className="form-check-label" htmlFor="inlineRadio3">ไม่ระบุ</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">คำนำหน้าชื่อ</label>
-                                        <select className="form-select mb-3" aria-label="Default select example">
-                                            <option selected={true}>เลือกคำนำหน้าชื่อ</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">ชื่อ</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">นามสกุล</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">คำนำหน้าชื่อ (ภาษาอังกฤษ)</label>
-                                        <select className="form-select mb-3" aria-label="Default select example">
-                                            <option selected={true}>เลือกคำนำหน้าชื่อ</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">ชื่อ (ภาษาอังกฤษ)</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">นามสกุล (ภาษาอังกฤษ)</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">สัญชาติ</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3" style={{ bottom: "0", position: "absolute" }}>
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">วันที่ออกบัตร</label>
-                                        <input type="date" className="form-control" id="exampleInputdate" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3" style={{ bottom: "0", position: "absolute" }}>
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">วันที่บัตรหมดอายุ</label>
-                                        <input type="date" className="form-control" id="exampleInputdate" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">ออกให้ ณ จังหวัด</label>
-                                        <select className="form-select mb-3" aria-label="Default select example">
-                                            <option selected={true}>เลือกจังหวัด</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">อำเภอ</label>
-                                        <select className="form-select mb-3" aria-label="Default select example">
-                                            <option selected={true}>เลือกอำเภอ</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">อีเมล</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                                <div className="mb-4 mt-3">
-                                    <div>
-                                        <h5 className="mb-1"><b>ที่อยู่</b></h5>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">เลขที่</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">หมู่ที่</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">ตรอก/ซอย</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">ถนน</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">จังหวัด</label>
-                                        <select className="form-select mb-3" aria-label="Default select example">
-                                            <option selected={true}>เลือกจังหวัด</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">อำเภอ</label>
-                                        <select className="form-select mb-3" aria-label="Default select example">
-                                            <option selected={true}>เลือกอำเภอ</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">ตำบล/แขวง</label>
-                                        <select className="form-select mb-3" aria-label="Default select example">
-                                            <option selected={true}>เลือกตำบล/แขวง</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">รหัสไปรษณีย์</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">หมายเลขโทรศัพท์</label>
-                                        <input type="text" className="form-control" placeholder="" />
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="mt-4">
-                                
-                                <div className="hstack gap-2 justify-content-center">
-                                    <a href="javascript:void(0);" className="btn btn-soft-secondary link-success fw-medium" data-bs-dismiss="modal"><i className="ri-close-line me-1 align-middle" /> ยกเลิก</a>
-                                    <a href="javascript:void(0);" className="btn btn-success"><i className="ri-save-line" /> บันทึกข้อมูล</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div
+        className="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabIndex={-1}
+        role="dialog"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="myLargeModalLabel">
+                ข้อมูลกรรมการผู้มีอำนาจกระทำการแทนนิติบุคคลผู้ขอใบอนุญาติ
+              </h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
             </div>
-
-            { /* Default Modals */ }
-            <div id="myModal" className="modal fade" tabIndex={-1} aria-labelledby="myModalLabel" aria-hidden="true" style={{ display: "none" }}>
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="myModalLabel">เลือกหลักประกัน</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+            <div className="modal-body" style={{ textAlign: "left" }}>
+              <div className="col-12 mt-3">
+                <div>
+                  <h5 className="mb-1">
+                    <b>ข้อมูลส่วนตัว</b>
+                  </h5>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-lg-4">
+                  <div className="mb-3" style={{ bottom: "0", position: "absolute" }}>
+                    <label className="form-label" htmlFor="steparrow-gen-info-email-input">
+                      เลขบัตรประจำตัวประชาชน
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3" style={{ bottom: "0", position: "absolute" }}>
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      วัน/เดือน/ปีเกิด
+                    </label>
+                    <input type="date" className="form-control" id="exampleInputdate" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="position-relative d-inline-block">
+                    <div className="position-absolute top-100 start-100 translate-middle">
+                      <label
+                        htmlFor="product-image-input"
+                        className="mb-0"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="right"
+                        aria-label="Select Image"
+                      >
+                        <div className="avatar-xs">
+                          <div className="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
+                            <i className="ri-image-fill" />
+                          </div>
                         </div>
-                        <div className="modal-body">
-                            <h5 className="fs-15">
-                                หลักประกัน 
-                            </h5>
-                            <div className="col-12">
-                                { /* Outlined Styles */ }
-                                <div className="hstack gap-2 flex-wrap">
+                      </label>
+                      <input
+                        className="form-control d-none"
+                        id="product-image-input"
+                        type="file"
+                        accept="image/png, image/gif, image/jpeg"
+                      />
+                    </div>
+                    <div className="avatar-lg">
+                      <div className="avatar-title bg-light rounded">
+                        <img src="" id="product-img" className="avatar-md h-auto" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      เลขบัตรประจำตัวประชาชน
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div className="col-lg-8">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      เพศ
+                    </label>
+                    <div className="mt-4 mt-lg-0">
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="inlineRadioOptions1"
+                          id="inlineRadio1"
+                          value="option1"
+                        />
+                        <label className="form-check-label" htmlFor="inlineRadio1">
+                          ชาย
+                        </label>
+                      </div>
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="inlineRadioOptions2"
+                          id="inlineRadio2"
+                          value="option2"
+                        />
+                        <label className="form-check-label" htmlFor="inlineRadio2">
+                          หญิง
+                        </label>
+                      </div>
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="inlineRadioOptions3"
+                          id="inlineRadio3"
+                          value="option3"
+                        />
+                        <label className="form-check-label" htmlFor="inlineRadio3">
+                          ไม่ระบุ
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      คำนำหน้าชื่อ
+                    </label>
+                    <select className="form-select mb-3" aria-label="Default select example">
+                      <option selected={true}>เลือกคำนำหน้าชื่อ</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      ชื่อ
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      นามสกุล
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      คำนำหน้าชื่อ (ภาษาอังกฤษ)
+                    </label>
+                    <select className="form-select mb-3" aria-label="Default select example">
+                      <option selected={true}>เลือกคำนำหน้าชื่อ</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      ชื่อ (ภาษาอังกฤษ)
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      นามสกุล (ภาษาอังกฤษ)
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      สัญชาติ
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3" style={{ bottom: "0", position: "absolute" }}>
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      วันที่ออกบัตร
+                    </label>
+                    <input type="date" className="form-control" id="exampleInputdate" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3" style={{ bottom: "0", position: "absolute" }}>
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      วันที่บัตรหมดอายุ
+                    </label>
+                    <input type="date" className="form-control" id="exampleInputdate" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      ออกให้ ณ จังหวัด
+                    </label>
+                    <select className="form-select mb-3" aria-label="Default select example">
+                      <option selected={true}>เลือกจังหวัด</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      อำเภอ
+                    </label>
+                    <select className="form-select mb-3" aria-label="Default select example">
+                      <option selected={true}>เลือกอำเภอ</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      อีเมล
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div className="mb-4 mt-3">
+                  <div>
+                    <h5 className="mb-1">
+                      <b>ที่อยู่</b>
+                    </h5>
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      เลขที่
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      หมู่ที่
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      ตรอก/ซอย
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      ถนน
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      จังหวัด
+                    </label>
+                    <select className="form-select mb-3" aria-label="Default select example">
+                      <option selected={true}>เลือกจังหวัด</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      อำเภอ
+                    </label>
+                    <select className="form-select mb-3" aria-label="Default select example">
+                      <option selected={true}>เลือกอำเภอ</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      ตำบล/แขวง
+                    </label>
+                    <select className="form-select mb-3" aria-label="Default select example">
+                      <option selected={true}>เลือกตำบล/แขวง</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      รหัสไปรษณีย์
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      หมายเลขโทรศัพท์
+                    </label>
+                    <input type="text" className="form-control" placeholder="" />
+                  </div>
+                </div>
+              </div>
 
-                                    <input type="radio" className="btn-check showlk" name="options-outlined" id="success-outlined" value="1" checked={true} />
-                                    <label className="btn btn-outline-primary" htmlFor="success-outlined"><i className="ri-focus-2-fill" /> เงินสด</label>
+              <div className="mt-4">
+                <div className="hstack gap-2 justify-content-center">
+                  <a
+                    href="javascript:void(0);"
+                    className="btn btn-soft-secondary link-success fw-medium"
+                    data-bs-dismiss="modal"
+                  >
+                    <i className="ri-close-line me-1 align-middle" /> ยกเลิก
+                  </a>
+                  <a href="javascript:void(0);" className="btn btn-success">
+                    <i className="ri-save-line" /> บันทึกข้อมูล
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                                    <input type="radio" className="btn-check showlk" name="options-outlined" id="danger-outlined" value="2" />
-                                    <label className="btn btn-outline-primary" htmlFor="danger-outlined"><i className="ri-focus-2-fill" /> พันธบัตรรัฐบาลไทย</label>
+      <div
+        id="myModal"
+        className="modal fade"
+        tabIndex={-1}
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
+        style={{ display: "none" }}
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="myModalLabel">
+                เลือกหลักประกัน
+              </h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                {" "}
+              </button>
+            </div>
+            <div className="modal-body">
+              <h5 className="fs-15">หลักประกัน</h5>
+              <div className="col-12">
+                {/* Outlined Styles */}
+                <div className="hstack gap-2 flex-wrap">
+                  <input
+                    type="radio"
+                    className="btn-check showlk"
+                    name="options-outlined"
+                    id="success-outlined"
+                    value="1"
+                    checked={true}
+                  />
+                  <label className="btn btn-outline-primary" htmlFor="success-outlined">
+                    <i className="ri-focus-2-fill" /> เงินสด
+                  </label>
 
-                                    <input type="radio" className="btn-check showlk" name="options-outlined" id="primary-outlined" value="3" />
-                                    <label className="btn btn-outline-primary" htmlFor="primary-outlined"><i className="ri-focus-2-fill" /> สัญญาค้ำประกัน</label>
-                                </div>
-                            </div>
-                            <div className="row mt-3 show-1">
-                                <div className="col-12">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">จำนวนเงิน</label>
-                                        <input type="text" className="form-control" placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E08\u0E33\u0E19\u0E27\u0E19\u0E40\u0E07\u0E34\u0E19\u0E40\u0E1B\u0E47\u0E19\u0E15\u0E31\u0E27\u0E40\u0E25\u0E02" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row mt-3 show-2" style={{ display: "none" }}>
-                                <div className="col-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">เลขที่</label>
-                                        <input type="text" className="form-control" placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48" />
-                                    </div>
-                                </div>
-                                <div className="col-8">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">ราคา (บาท)</label>
-                                        <input type="text" className="form-control" placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E08\u0E33\u0E19\u0E27\u0E19\u0E40\u0E07\u0E34\u0E19\u0E40\u0E1B\u0E47\u0E19\u0E15\u0E31\u0E27\u0E40\u0E25\u0E02" />
-                                    </div>
-                                </div>
-                                <h5 className="fs-15 mt-3">
-                                    <b>แนบหลักฐาน </b>
-                                </h5>
-                                <div className="row mb-5 mt-10">
-                                    { /*begin::Label*/ }
-                                    <label className="form-label">
-                                        แนบหลักฐานเอกสารที่เกี่ยวข้อง
-                                    </label>
-                                    <div className="col-12">
-                                        <input className="form-control" type="file" id="formFile" />
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <div className="row mt-3 show-3" style={{ display: "none" }}>
-                                <div className="col-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">ธนาคาร</label>
-                                        <input type="text" className="form-control" placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E18\u0E19\u0E32\u0E04\u0E32\u0E23" />
-                                    </div>
-                                </div>
-                                <div className="col-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">สาขา</label>
-                                        <input type="text" className="form-control" placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E2A\u0E32\u0E02\u0E32" />
-                                    </div>
-                                </div>
-                                <div className="col-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">เลขที่</label>
-                                        <input type="text" className="form-control" placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48" />
-                                    </div>
-                                </div>
-                                <div className="col-4">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">ลงวันที่</label>
-                                        <input type="date" className="form-control" id="exampleInputdate" />
-                                    </div>
-                                </div>
-                                <div className="col-8">
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="steparrow-gen-info-username-input">จำนวนเงิน</label>
-                                        <input type="text" className="form-control" placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E08\u0E33\u0E19\u0E27\u0E19\u0E40\u0E07\u0E34\u0E19\u0E40\u0E1B\u0E47\u0E19\u0E15\u0E31\u0E27\u0E40\u0E25\u0E02" />
-                                    </div>
-                                </div>
-                                <h5 className="fs-15 mt-3">
-                                    <b>แนบหลักฐาน </b>
-                                </h5>
-                                <div className="row mb-5 mt-10">
-                                    { /*begin::Label*/ }
-                                    <label className="form-label">
-                                        แนบหลักฐานเอกสารที่เกี่ยวข้อง
-                                    </label>
-                                    <div className="col-12">
-                                        <input className="form-control" type="file" id="formFile" />
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary ">Save Changes</button>
-                        </div>
+                  <input
+                    type="radio"
+                    className="btn-check showlk"
+                    name="options-outlined"
+                    id="danger-outlined"
+                    value="2"
+                  />
+                  <label className="btn btn-outline-primary" htmlFor="danger-outlined">
+                    <i className="ri-focus-2-fill" /> พันธบัตรรัฐบาลไทย
+                  </label>
 
-                    </div>{ /* /.modal-content */ }
-                </div>{ /* /.modal-dialog */ }
-            </div>{ /* /.modal */ }</>
+                  <input
+                    type="radio"
+                    className="btn-check showlk"
+                    name="options-outlined"
+                    id="primary-outlined"
+                    value="3"
+                  />
+                  <label className="btn btn-outline-primary" htmlFor="primary-outlined">
+                    <i className="ri-focus-2-fill" /> สัญญาค้ำประกัน
+                  </label>
+                </div>
+              </div>
+              <div className="row mt-3 show-1">
+                <div className="col-12">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      จำนวนเงิน
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E08\u0E33\u0E19\u0E27\u0E19\u0E40\u0E07\u0E34\u0E19\u0E40\u0E1B\u0E47\u0E19\u0E15\u0E31\u0E27\u0E40\u0E25\u0E02"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row mt-3 show-2" style={{ display: "none" }}>
+                <div className="col-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      เลขที่
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48"
+                    />
+                  </div>
+                </div>
+                <div className="col-8">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      ราคา (บาท)
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E08\u0E33\u0E19\u0E27\u0E19\u0E40\u0E07\u0E34\u0E19\u0E40\u0E1B\u0E47\u0E19\u0E15\u0E31\u0E27\u0E40\u0E25\u0E02"
+                    />
+                  </div>
+                </div>
+                <h5 className="fs-15 mt-3">
+                  <b>แนบหลักฐาน </b>
+                </h5>
+                <div className="row mb-5 mt-10">
+                  {/*begin::Label*/}
+                  <label className="form-label">แนบหลักฐานเอกสารที่เกี่ยวข้อง</label>
+                  <div className="col-12">
+                    <input className="form-control" type="file" id="formFile" />
+                  </div>
+                </div>
+              </div>
+              <div className="row mt-3 show-3" style={{ display: "none" }}>
+                <div className="col-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      ธนาคาร
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E18\u0E19\u0E32\u0E04\u0E32\u0E23"
+                    />
+                  </div>
+                </div>
+                <div className="col-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      สาขา
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E2A\u0E32\u0E02\u0E32"
+                    />
+                  </div>
+                </div>
+                <div className="col-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      เลขที่
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48"
+                    />
+                  </div>
+                </div>
+                <div className="col-4">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      ลงวันที่
+                    </label>
+                    <input type="date" className="form-control" id="exampleInputdate" />
+                  </div>
+                </div>
+                <div className="col-8">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                      จำนวนเงิน
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E08\u0E33\u0E19\u0E27\u0E19\u0E40\u0E07\u0E34\u0E19\u0E40\u0E1B\u0E47\u0E19\u0E15\u0E31\u0E27\u0E40\u0E25\u0E02"
+                    />
+                  </div>
+                </div>
+                <h5 className="fs-15 mt-3">
+                  <b>แนบหลักฐาน </b>
+                </h5>
+                <div className="row mb-5 mt-10">
+                  {/*begin::Label*/}
+                  <label className="form-label">แนบหลักฐานเอกสารที่เกี่ยวข้อง</label>
+                  <div className="col-12">
+                    <input className="form-control" type="file" id="formFile" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-light" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="button" className="btn btn-primary ">
+                Save Changes
+              </button>
+            </div>
+          </div>
+          {/* /.modal-content */}
+        </div>
+        {/* /.modal-dialog */}
+      </div>
     </>
   );
 };

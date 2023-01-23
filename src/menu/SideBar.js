@@ -126,8 +126,8 @@ export default function SideBar() {
     <>
       <div className="app-menu navbar-menu">
         {/* LOGO */}
-        <div className="navbar-brand-box">
-          {/* Dark Logo*/}
+        {/* <div className="navbar-brand-box">
+  
           <a href="index.html" className="logo logo-dark">
             <span className="logo-sm">
               <img src={logo} alt="" height="22" />
@@ -136,7 +136,7 @@ export default function SideBar() {
               <img src={logo} alt="" height="40" />
             </span>
           </a>
-          {/* Light Logo*/}
+  
           <a href="index.html" className="logo logo-light">
             <span className="logo-sm">
               <img src={logo} alt="" height="22" />
@@ -152,9 +152,9 @@ export default function SideBar() {
           >
             <i className="ri-record-circle-line" />
           </button>
-        </div>
+        </div> */}
 
-        <div data-simplebar="init" id="scrollbar" className="h-100">
+        <div data-simplebar="init" id="scrollbar" className="h-100 mt-4">
           <div className="container-fluid">
             <ul className="navbar-nav" id="navbar-nav">
               <li className="nav-item">
