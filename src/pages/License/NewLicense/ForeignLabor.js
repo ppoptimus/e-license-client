@@ -2,35 +2,50 @@ import React, { useState } from "react";
 import {
   Card,
   CardBody,
-  CardHeader,
   Col,
-  Container,
   Form,
-  Input,
-  Label,
   Nav,
   NavItem,
   NavLink,
   Row,
   TabContent,
   TabPane,
-  Progress,
 } from "reactstrap";
 import classnames from "classnames";
 
 export const ForeignLabor = () => {
   const [activeArrowTab, setactiveArrowTab] = useState(4);
   const [passedarrowSteps, setPassedarrowSteps] = useState([1]);
+  const [companyData, setcompanyData] = useState(
+    {
+      juristicNo : "0123456789012",
+      juristicType : "บริษัทจำกัด",
+      regisDate : "10/01/1990",
+      companyName : "บริษัท ทีซีเอ็ม จำกัด มหาชน",
+      companyEmail : "t.cm@tmc.com",
+      registeredCapital : "1,500,000",
+      addressNo : "199/100",
+      moo : "7",
+      soi : "-",
+      road : "รัชดาภิเษก",
+      zipcode : "10110",
+      telephoneNo : "02 661 8884",
+    }
+  )
 
   function toggleArrowTab(tab) {
     if (activeArrowTab !== tab) {
       var modifiedSteps = [...passedarrowSteps, tab];
 
-      if (tab >= 4 && tab <= 10) {
+      if (tab >= 1 && tab <= 7) {
         setactiveArrowTab(tab);
         setPassedarrowSteps(modifiedSteps);
       }
     }
+  }
+
+  const onJuristicNoSearch = () => {
+    console.log("search")
   }
   return (
     <>
@@ -48,17 +63,17 @@ export const ForeignLabor = () => {
             <CardBody className="form-steps">
               <Form>
                 <div className="step-arrow-nav mb-4">
-                  <Nav className="nav-pills custom-nav nav-justified" role="tablist">
+                  <Nav className="nav-pills nav-justified" role="tablist">
                     <NavItem>
                       <NavLink
                         href="#"
                         id="company-data-tab"
                         className={classnames({
-                          active: activeArrowTab === 4,
-                          done: activeArrowTab <= 9 && activeArrowTab > 3,
+                          active: activeArrowTab === 1,
+                          done: activeArrowTab <= 7 && activeArrowTab >= 0,
                         })}
                         onClick={() => {
-                          toggleArrowTab(4);
+                          toggleArrowTab(1);
                         }}
                       >
                         <b>1. ข้อมูลบริษัท</b>
@@ -70,11 +85,11 @@ export const ForeignLabor = () => {
                         href="#"
                         id="board-data-tab"
                         className={classnames({
-                          active: activeArrowTab === 5,
-                          done: activeArrowTab <= 9 && activeArrowTab > 4,
+                          active: activeArrowTab === 2,
+                          done: activeArrowTab <= 7 && activeArrowTab > 1,
                         })}
                         onClick={() => {
-                          toggleArrowTab(5);
+                          toggleArrowTab(2);
                         }}
                       >
                         <b>2. รายชื่อกรรมการ</b>
@@ -86,11 +101,11 @@ export const ForeignLabor = () => {
                         href="#"
                         id="shareholder-data-tab"
                         className={classnames({
-                          active: activeArrowTab === 6,
-                          done: activeArrowTab <= 9 && activeArrowTab > 5,
+                          active: activeArrowTab === 3,
+                          done: activeArrowTab <= 7 && activeArrowTab > 2,
                         })}
                         onClick={() => {
-                          toggleArrowTab(6);
+                          toggleArrowTab(3);
                         }}
                       >
                         <b>3. รายชื่อผู้ถือหุ้น</b>
@@ -102,11 +117,11 @@ export const ForeignLabor = () => {
                         href="#"
                         id="manager-data-tab"
                         className={classnames({
-                          active: activeArrowTab === 7,
-                          done: activeArrowTab <= 9 && activeArrowTab > 6,
+                          active: activeArrowTab === 4,
+                          done: activeArrowTab <= 7 && activeArrowTab > 3,
                         })}
                         onClick={() => {
-                          toggleArrowTab(7);
+                          toggleArrowTab(4);
                         }}
                       >
                         <b>4. เลือกผู้จัดการ</b>
@@ -118,11 +133,11 @@ export const ForeignLabor = () => {
                         href="#"
                         id="document-data-tab"
                         className={classnames({
-                          active: activeArrowTab === 8,
-                          done: activeArrowTab <= 9 && activeArrowTab > 7,
+                          active: activeArrowTab === 5,
+                          done: activeArrowTab <= 7 && activeArrowTab > 4,
                         })}
                         onClick={() => {
-                          toggleArrowTab(8);
+                          toggleArrowTab(5);
                         }}
                       >
                         <b>5. เอกสารประกอบ</b>
@@ -134,11 +149,11 @@ export const ForeignLabor = () => {
                         href="#"
                         id="deposit-data-tab"
                         className={classnames({
-                          active: activeArrowTab === 9,
-                          done: activeArrowTab <= 9 && activeArrowTab > 8,
+                          active: activeArrowTab === 6,
+                          done: activeArrowTab <= 7 && activeArrowTab > 5,
                         })}
                         onClick={() => {
-                          toggleArrowTab(9);
+                          toggleArrowTab(6);
                         }}
                       >
                         <b>6. หลักประกัน</b>
@@ -148,7 +163,7 @@ export const ForeignLabor = () => {
                 </div>
 
                 <TabContent activeTab={activeArrowTab}>
-                  <TabPane id="company-data" tabId={4}>
+                  <TabPane id="company-data" tabId={1}>
                     <div>
                       <Row>
                         <div className="mb-4">
@@ -160,21 +175,22 @@ export const ForeignLabor = () => {
                       <Row>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-email-input">
+                            <label className="form-label">
                               เลขที่นิติบุคคล
                             </label>
 
                             <div className="search">
                               <input type="text" className="form-control" placeholder="Search..." />
-                              <button className="btn btn-secondary p-0">
+                              <button type="button" className="btn btn-secondary p-0" onClick={onJuristicNoSearch}>
                                 <i className="ri-search-line" />
                               </button>
                             </div>
+
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               ประเภทนิติบุคคล
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -182,7 +198,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               วันที่จดทะเบียน
                             </label>
                             <input type="date" className="form-control" id="exampleInputdate" />
@@ -190,7 +206,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-8">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               ชื่อ
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -198,7 +214,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               อีเมล
                             </label>
                             <input type="email" className="form-control form-control-icon" id="iconInput" />
@@ -206,7 +222,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-8">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               ทุนจดทะเบียน
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -224,7 +240,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               เลขที่
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -232,7 +248,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               หมู่ที่
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -240,7 +256,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               ตรอก/ซอย
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -248,7 +264,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               ถนน
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -256,7 +272,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               จังหวัด
                             </label>
                             <select className="form-select mb-3" aria-label="Default select example">
@@ -266,7 +282,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               อำเภอ
                             </label>
                             <select className="form-select mb-3" aria-label="Default select example">
@@ -276,7 +292,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               ตำบล/แขวง
                             </label>
                             <select className="form-select mb-3" aria-label="Default select example">
@@ -286,7 +302,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               รหัสไปรษณีย์
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -294,14 +310,14 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="company-data-username-input">
+                            <label className="form-label">
                               หมายเลขโทรศัพท์
                             </label>
                             <input type="text" className="form-control" placeholder="" />
                           </div>
                         </div>
                       </Row>
-                      <Row>
+                      {/* <Row>
                         <div className="col-12 mt-3">
                           <div className="bg-light p-3">
                             <div className="row g-2" style={{ minHeight: "9rem" }}>
@@ -504,7 +520,7 @@ export const ForeignLabor = () => {
                             </div>
                           </div>
                         </div>
-                      </Row>
+                      </Row> */}
                     </div>
 
                     <div className="d-flex align-items-start gap-3 mt-4">
@@ -521,7 +537,7 @@ export const ForeignLabor = () => {
                     </div>
                   </TabPane>
 
-                  <TabPane id="board-data" tabId={5}>
+                  <TabPane id="board-data" tabId={2}>
                     <Row>
                       <div className="col-8 mb-4 mt-3">
                         <h5 className="mb-1">
@@ -653,7 +669,7 @@ export const ForeignLabor = () => {
                     </div>
                   </TabPane>
 
-                  <TabPane id="shareholder-data" tabId={6}>
+                  <TabPane id="shareholder-data" tabId={3}>
                     <Row>
                       <div className="col-8 mb-4 mt-3">
                         <h5 className="mb-1">
@@ -789,7 +805,7 @@ export const ForeignLabor = () => {
                     </div>
                   </TabPane>
 
-                  <TabPane id="manager-data" tabId={7}>
+                  <TabPane id="manager-data" tabId={4}>
                     <Row>
                       <div className="col-12 mb-4 mt-3">
                         <h5 className="mb-1">
@@ -808,7 +824,7 @@ export const ForeignLabor = () => {
                                     <input
                                       className="form-check-input"
                                       type="checkbox"
-                                      //
+                                      
                                       id="responsivetableCheck"
                                     />
                                     <label className="form-check-label" htmlFor="responsivetableCheck" />
@@ -827,7 +843,7 @@ export const ForeignLabor = () => {
                                     <input
                                       className="form-check-input"
                                       type="checkbox"
-                                      //
+                                      
                                       id="responsivetableCheck01"
                                     />
                                     <label className="form-check-label" htmlFor="responsivetableCheck01" />
@@ -858,7 +874,7 @@ export const ForeignLabor = () => {
                                     <input
                                       className="form-check-input"
                                       type="checkbox"
-                                      //
+                                      
                                       id="responsivetableCheck01"
                                     />
                                     <label className="form-check-label" htmlFor="responsivetableCheck01" />
@@ -889,7 +905,7 @@ export const ForeignLabor = () => {
                                     <input
                                       className="form-check-input"
                                       type="checkbox"
-                                      //
+                                      
                                       id="responsivetableCheck01"
                                     />
                                     <label className="form-check-label" htmlFor="responsivetableCheck01" />
@@ -916,7 +932,7 @@ export const ForeignLabor = () => {
                               </tr>
                             </tbody>
                           </table>
-                          {/* end table */}
+                          
                         </div>
                       </div>
                     </Row>
@@ -939,12 +955,12 @@ export const ForeignLabor = () => {
                         }}
                       >
                         <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>
-                        Submit
+                        ถัดไป
                       </button>
                     </div>
                   </TabPane>
 
-                  <TabPane id="document-data" tabId={8}>
+                  <TabPane id="document-data" tabId={5}>
                     <Row>
                       <div className="col-12 mb-4 mt-3">
                         <h5 className="mb-1">
@@ -1064,12 +1080,12 @@ export const ForeignLabor = () => {
                         }}
                       >
                         <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>
-                        Submit
+                        ถัดไป
                       </button>
                     </div>
                   </TabPane>
 
-                  <TabPane id="document-data" tabId={9}>
+                  <TabPane id="document-data" tabId={6}>
                     <Row>
                       <div className="col-12 mb-4 mt-3">
                         <h5 className="mb-1">
@@ -1150,13 +1166,13 @@ export const ForeignLabor = () => {
                       </button>
                       <button
                         type="button"
-                        className="btn btn-success btn-label right ms-auto nexttab nexttab"
+                        className="btn btn-success ms-auto"
                         onClick={() => {
                           console.log("Submit");
                         }}
                       >
-                        <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>
-                        Submit
+                        <i className="ri-save-line align-middle fs-16 me-2"></i>
+                        บันทึกข้อมูล
                       </button>
                     </div>
                   </TabPane>
