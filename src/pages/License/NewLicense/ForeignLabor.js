@@ -1,186 +1,180 @@
-import React, { useEffect } from "react";
-import $ from "jquery";
-
-// import { Input } from "reactstrap";
+import React, { useState } from "react";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  Col,
+  Container,
+  Form,
+  Input,
+  Label,
+  Nav,
+  NavItem,
+  NavLink,
+  Row,
+  TabContent,
+  TabPane,
+  Progress,
+} from "reactstrap";
+import classnames from "classnames";
 
 export const ForeignLabor = () => {
-  useEffect(() => {
-    jquerys();
-  }, []);
+  const [activeArrowTab, setactiveArrowTab] = useState(4);
+  const [passedarrowSteps, setPassedarrowSteps] = useState([1]);
 
-  const jquerys = () => {
-    $(document).ready(function () {
-      $(".show-1").css("display", "flex");
-      $(".show-2").css("display", "none");
-      $(".show-3").css("display", "none");
+  function toggleArrowTab(tab) {
+    if (activeArrowTab !== tab) {
+      var modifiedSteps = [...passedarrowSteps, tab];
 
-      //showlk
-      $(".showlk").click(function () {
-        var getvals = $(this).val();
-        if (getvals == "1") {
-          $(".show-1").css("display", "flex");
-          $(".show-2").css("display", "none");
-          $(".show-3").css("display", "none");
-        } else if (getvals == "2") {
-          $(".show-1").css("display", "none");
-          $(".show-2").css("display", "flex");
-          $(".show-3").css("display", "none");
-        } else if (getvals == "3") {
-          $(".show-1").css("display", "none");
-          $(".show-2").css("display", "none");
-          $(".show-3").css("display", "flex");
-        } else {
-          $(".show-1").css("display", "flex");
-          $(".show-2").css("display", "none");
-          $(".show-3").css("display", "none");
-        }
-      });
-    });
-  };
+      if (tab >= 4 && tab <= 10) {
+        setactiveArrowTab(tab);
+        setPassedarrowSteps(modifiedSteps);
+      }
+    }
+  }
   return (
     <>
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-xl-12">
-            <div className="card">
-              <div className="card-body">
-                <h2 className="text-dark load-txt">ใบอนุญาตให้ประกอบธุรกิจการนำคนต่างด้าวมาทำงานกับนายจ้างในประเทศ</h2>
-                <span>
-                  คำขอ<span className="load-txt">ใบอนุญาตให้ประกอบธุรกิจการนำคนต่างด้าวมาทำงานกับนายจ้างในประเทศ</span>
-                </span>
-              </div>
+      <Row>
+        <Col xl={12}>
+          <div className="card">
+            <div className="card-body">
+              <h2 className="text-dark load-txt">ใบอนุญาตให้ประกอบธุรกิจการนำคนต่างด้าวมาทำงานกับนายจ้างในประเทศ</h2>
+              <span>
+                คำขอ<span className="load-txt">ใบอนุญาตให้ประกอบธุรกิจการนำคนต่างด้าวมาทำงานกับนายจ้างในประเทศ</span>
+              </span>
             </div>
-            <div className="card">
-              <div className="card-body form-steps">
-                <div className="step-arrow-nav mb-4 pt-3">
-                  <ul className="nav nav-pills custom-nav nav-justified" role="tablist">
-                    <li className="nav-item" role="presentation">
-                      <button
-                        className="nav-link active"
-                        id="datainfo1-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#datainfo1"
-                        type="button"
-                        role="tab"
-                        aria-controls="datainfo1"
-                        aria-selected="false"
-                        data-position="0"
-                        tabIndex={-1}
+          </div>
+          <Card>
+            <CardBody className="form-steps">
+              <Form>
+                <div className="step-arrow-nav mb-4">
+                  <Nav className="nav-pills custom-nav nav-justified" role="tablist">
+                    <NavItem>
+                      <NavLink
+                        href="#"
+                        id="company-data-tab"
+                        className={classnames({
+                          active: activeArrowTab === 4,
+                          done: activeArrowTab <= 9 && activeArrowTab > 3,
+                        })}
+                        onClick={() => {
+                          toggleArrowTab(4);
+                        }}
                       >
                         <b>1. ข้อมูลบริษัท</b>
-                      </button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                      <button
-                        className="nav-link "
-                        id="datainfo2-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#datainfo2"
-                        type="button"
-                        role="tab"
-                        aria-controls="datainfo2"
-                        aria-selected="true"
-                        data-position="1"
+                      </NavLink>
+                    </NavItem>
+
+                    <NavItem>
+                      <NavLink
+                        href="#"
+                        id="board-data-tab"
+                        className={classnames({
+                          active: activeArrowTab === 5,
+                          done: activeArrowTab <= 9 && activeArrowTab > 4,
+                        })}
+                        onClick={() => {
+                          toggleArrowTab(5);
+                        }}
                       >
                         <b>2. รายชื่อกรรมการ</b>
-                      </button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                      <button
-                        className="nav-link"
-                        id="datainfo3-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#datainfo3"
-                        type="button"
-                        role="tab"
-                        aria-controls="datainfo3"
-                        aria-selected="false"
-                        data-position="2"
+                      </NavLink>
+                    </NavItem>
+
+                    <NavItem>
+                      <NavLink
+                        href="#"
+                        id="shareholder-data-tab"
+                        className={classnames({
+                          active: activeArrowTab === 6,
+                          done: activeArrowTab <= 9 && activeArrowTab > 5,
+                        })}
+                        onClick={() => {
+                          toggleArrowTab(6);
+                        }}
                       >
                         <b>3. รายชื่อผู้ถือหุ้น</b>
-                      </button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                      <button
-                        className="nav-link"
-                        id="datainfo4-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#datainfo4"
-                        type="button"
-                        role="tab"
-                        aria-controls="datainfo4"
-                        aria-selected="false"
-                        data-position="3"
+                      </NavLink>
+                    </NavItem>
+
+                    <NavItem>
+                      <NavLink
+                        href="#"
+                        id="manager-data-tab"
+                        className={classnames({
+                          active: activeArrowTab === 7,
+                          done: activeArrowTab <= 9 && activeArrowTab > 6,
+                        })}
+                        onClick={() => {
+                          toggleArrowTab(7);
+                        }}
                       >
                         <b>4. เลือกผู้จัดการ</b>
-                      </button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                      <button
-                        className="nav-link"
-                        id="datainfo5-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#datainfo5"
-                        type="button"
-                        role="tab"
-                        aria-controls="datainfo5"
-                        aria-selected="false"
-                        data-position="4"
+                      </NavLink>
+                    </NavItem>
+
+                    <NavItem>
+                      <NavLink
+                        href="#"
+                        id="document-data-tab"
+                        className={classnames({
+                          active: activeArrowTab === 8,
+                          done: activeArrowTab <= 9 && activeArrowTab > 7,
+                        })}
+                        onClick={() => {
+                          toggleArrowTab(8);
+                        }}
                       >
                         <b>5. เอกสารประกอบ</b>
-                      </button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                      <button
-                        className="nav-link"
-                        id="datainfo6-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#datainfo6"
-                        type="button"
-                        role="tab"
-                        aria-controls="datainfo6"
-                        aria-selected="false"
-                        data-position="5"
+                      </NavLink>
+                    </NavItem>
+
+                    <NavItem>
+                      <NavLink
+                        href="#"
+                        id="deposit-data-tab"
+                        className={classnames({
+                          active: activeArrowTab === 9,
+                          done: activeArrowTab <= 9 && activeArrowTab > 8,
+                        })}
+                        onClick={() => {
+                          toggleArrowTab(9);
+                        }}
                       >
                         <b>6. หลักประกัน</b>
-                      </button>
-                    </li>
-                  </ul>
+                      </NavLink>
+                    </NavItem>
+                  </Nav>
                 </div>
 
-                <div className="tab-content">
-                  <div
-                    className="tab-pane fade show active"
-                    id="datainfo1"
-                    role="tabpanel"
-                    aria-labelledby="datainfo1-tab"
-                  >
+                <TabContent activeTab={activeArrowTab}>
+                  <TabPane id="company-data" tabId={4}>
                     <div>
-                      <div className="mb-4">
-                        <div>
+                      <Row>
+                        <div className="mb-4">
                           <h5 className="mb-1">
                             <b>ข้อมูลบริษัท</b>
                           </h5>
                         </div>
-                      </div>
-                      <div className="row">
+                      </Row>
+                      <Row>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-email-input">
+                            <label className="form-label" htmlFor="company-data-email-input">
                               เลขที่นิติบุคคล
                             </label>
-                            {/* <input type="text" className="form-control" placeholder="Search..." /> */}
-                            <div className="search">
-                       
-                          <input type="text" className="form-control" placeholder="Search..." />
-                          <button className="btn btn-secondary p-0"><i className="ri-search-line" /></button>
-                        </div>
 
+                            <div className="search">
+                              <input type="text" className="form-control" placeholder="Search..." />
+                              <button className="btn btn-secondary p-0">
+                                <i className="ri-search-line" />
+                              </button>
+                            </div>
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               ประเภทนิติบุคคล
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -188,7 +182,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               วันที่จดทะเบียน
                             </label>
                             <input type="date" className="form-control" id="exampleInputdate" />
@@ -196,7 +190,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-8">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               ชื่อ
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -204,7 +198,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               อีเมล
                             </label>
                             <input type="email" className="form-control form-control-icon" id="iconInput" />
@@ -212,7 +206,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-8">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               ทุนจดทะเบียน
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -224,13 +218,13 @@ export const ForeignLabor = () => {
                         <div className="mb-4 mt-3">
                           <div>
                             <h5 className="mb-1">
-                              <b>ข้อมูลบริษัท</b>
+                              <b>ข้อมูลที่อยู่บริษัท</b>
                             </h5>
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               เลขที่
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -238,7 +232,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               หมู่ที่
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -246,7 +240,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               ตรอก/ซอย
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -254,7 +248,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               ถนน
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -262,7 +256,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               จังหวัด
                             </label>
                             <select className="form-select mb-3" aria-label="Default select example">
@@ -272,7 +266,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               อำเภอ
                             </label>
                             <select className="form-select mb-3" aria-label="Default select example">
@@ -282,7 +276,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               ตำบล/แขวง
                             </label>
                             <select className="form-select mb-3" aria-label="Default select example">
@@ -292,7 +286,7 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               รหัสไปรษณีย์
                             </label>
                             <input type="text" className="form-control" placeholder="" />
@@ -300,238 +294,241 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                            <label className="form-label" htmlFor="company-data-username-input">
                               หมายเลขโทรศัพท์
                             </label>
                             <input type="text" className="form-control" placeholder="" />
                           </div>
                         </div>
-                      </div>
-
-                      <div className="col-12 mt-3">
-                        <div className="bg-light p-3">
-                          <div className="row g-2" style={{ minHeight: "9rem" }}>
-                            <div className="col-lg-4">
-                              <div className="col-lg-12">
-                                <div className="mb-3">
-                                  <label className="form-label" htmlFor="steparrow-gen-info-username-input">
-                                    ละติจูด
+                      </Row>
+                      <Row>
+                        <div className="col-12 mt-3">
+                          <div className="bg-light p-3">
+                            <div className="row g-2" style={{ minHeight: "9rem" }}>
+                              <div className="col-lg-4">
+                                <div className="col-lg-12">
+                                  <div className="mb-3">
+                                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                                      ละติจูด
+                                    </label>
+                                    <input type="text" className="form-control" placeholder="" />
+                                  </div>
+                                </div>
+                                <div className="col-lg-12">
+                                  <div className="mb-3">
+                                    <label className="form-label" htmlFor="steparrow-gen-info-username-input">
+                                      ลองจิจูด
+                                    </label>
+                                    <input type="text" className="form-control" placeholder="" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-lg-8" style={{ padding: 15 }}>
+                                <iframe
+                                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15496.059774239!2d100.51836289775781!3d13.838141159271867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29b61192065a3%3A0x13e1e4e5a96cf523!2z4Liq4Liz4LiZ4Lix4LiB4LiH4Liy4LiZ4Lib4Lij4Liw4LiB4Lix4LiZ4Liq4Lix4LiH4LiE4LihIOC4quC4s-C4meC4seC4geC4h-C4suC4meC5g-C4q-C4jeC5iA!5e0!3m2!1sth!2sth!4v1670395470923!5m2!1sth!2sth"
+                                  width="100%"
+                                  height="300"
+                                  style={{ border: "0" }}
+                                  allowFullScreen
+                                  loading="lazy"
+                                  referrerpolicy="no-referrer-when-downgrade"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="mb-4 mt-5">
+                          <div>
+                            <h5 className="mb-1">
+                              <b>แนบรูปที่ตั้งสำนักงาน</b>
+                            </h5>
+                            <p>1. รูปภาพภายนอกสำนักงาน</p>
+                          </div>
+                        </div>
+                        <div className="col-12 mb-5">
+                          <div className="row">
+                            <div className="col-2">
+                              <div className="position-relative d-inline-block">
+                                <div className="position-absolute top-100 start-100 translate-middle">
+                                  <label
+                                    htmlFor="product-image-input"
+                                    className="mb-0"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="right"
+                                    aria-label="Select Image"
+                                  >
+                                    <div className="avatar-xs">
+                                      <div className="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
+                                        <i className="ri-image-fill" />
+                                      </div>
+                                    </div>
                                   </label>
-                                  <input type="text" className="form-control" placeholder="" />
+                                  <input
+                                    className="form-control d-none"
+                                    //
+                                    id="product-image-input"
+                                    type="file"
+                                    accept="image/png, image/gif, image/jpeg"
+                                  />
+                                </div>
+                                <div className="avatar-lg">
+                                  <div className="avatar-title bg-light rounded">
+                                    <img src="" id="product-img" className="avatar-md h-auto" />
+                                  </div>
                                 </div>
                               </div>
-                              <div className="col-lg-12">
-                                <div className="mb-3">
-                                  <label className="form-label" htmlFor="steparrow-gen-info-username-input">
-                                    ลองจิจูด
+                            </div>
+                            <div className="col-2">
+                              <div className="position-relative d-inline-block">
+                                <div className="position-absolute top-100 start-100 translate-middle">
+                                  <label
+                                    htmlFor="product-image-input"
+                                    className="mb-0"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="right"
+                                    aria-label="Select Image"
+                                  >
+                                    <div className="avatar-xs">
+                                      <div className="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
+                                        <i className="ri-image-fill" />
+                                      </div>
+                                    </div>
                                   </label>
-                                  <input type="text" className="form-control" placeholder="" />
+                                  <input
+                                    className="form-control d-none"
+                                    //
+                                    id="product-image-input"
+                                    type="file"
+                                    accept="image/png, image/gif, image/jpeg"
+                                  />
+                                </div>
+                                <div className="avatar-lg">
+                                  <div className="avatar-title bg-light rounded">
+                                    <img src="" id="product-img" className="avatar-md h-auto" />
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                            <div className="col-lg-8" style={{ padding: 15 }}>
-                              <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15496.059774239!2d100.51836289775781!3d13.838141159271867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29b61192065a3%3A0x13e1e4e5a96cf523!2z4Liq4Liz4LiZ4Lix4LiB4LiH4Liy4LiZ4Lib4Lij4Liw4LiB4Lix4LiZ4Liq4Lix4LiH4LiE4LihIOC4quC4s-C4meC4seC4geC4h-C4suC4meC5g-C4q-C4jeC5iA!5e0!3m2!1sth!2sth!4v1670395470923!5m2!1sth!2sth"
-                                width="100%"
-                                height="300"
-                                style={{ border: "0" }}
-                                allowFullScreen
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="mb-4 mt-5">
-                        <div>
-                          <h5 className="mb-1">
-                            <b>แนบรูปที่ตั้งสำนักงาน</b>
-                          </h5>
-                          <p>1. รูปภาพภายนอกสำนักงาน</p>
-                        </div>
-                      </div>
-                      <div className="col-12 mb-5">
-                        <div className="row">
-                          <div className="col-2">
-                            <div className="position-relative d-inline-block">
-                              <div className="position-absolute top-100 start-100 translate-middle">
-                                <label
-                                  htmlFor="product-image-input"
-                                  className="mb-0"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="right"
-                                  aria-label="Select Image"
-                                >
-                                  <div className="avatar-xs">
-                                    <div className="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
-                                      <i className="ri-image-fill" />
+                            <div className="col-2">
+                              <div className="position-relative d-inline-block">
+                                <div className="position-absolute top-100 start-100 translate-middle">
+                                  <label
+                                    htmlFor="product-image-input"
+                                    className="mb-0"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="right"
+                                    aria-label="Select Image"
+                                  >
+                                    <div className="avatar-xs">
+                                      <div className="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
+                                        <i className="ri-image-fill" />
+                                      </div>
                                     </div>
+                                  </label>
+                                  <input
+                                    className="form-control d-none"
+                                    //
+                                    id="product-image-input"
+                                    type="file"
+                                    accept="image/png, image/gif, image/jpeg"
+                                  />
+                                </div>
+                                <div className="avatar-lg">
+                                  <div className="avatar-title bg-light rounded">
+                                    <img src="" id="product-img" className="avatar-md h-auto" />
                                   </div>
-                                </label>
-                                <input
-                                  className="form-control d-none"
-                                  //
-                                  id="product-image-input"
-                                  type="file"
-                                  accept="image/png, image/gif, image/jpeg"
-                                />
-                              </div>
-                              <div className="avatar-lg">
-                                <div className="avatar-title bg-light rounded">
-                                  <img src="" id="product-img" className="avatar-md h-auto" />
                                 </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="col-2">
-                            <div className="position-relative d-inline-block">
-                              <div className="position-absolute top-100 start-100 translate-middle">
-                                <label
-                                  htmlFor="product-image-input"
-                                  className="mb-0"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="right"
-                                  aria-label="Select Image"
-                                >
-                                  <div className="avatar-xs">
-                                    <div className="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
-                                      <i className="ri-image-fill" />
+                            <div className="col-2">
+                              <div className="position-relative d-inline-block">
+                                <div className="position-absolute top-100 start-100 translate-middle">
+                                  <label
+                                    htmlFor="product-image-input"
+                                    className="mb-0"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="right"
+                                    aria-label="Select Image"
+                                  >
+                                    <div className="avatar-xs">
+                                      <div className="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
+                                        <i className="ri-image-fill" />
+                                      </div>
                                     </div>
+                                  </label>
+                                  <input
+                                    className="form-control d-none"
+                                    //
+                                    id="product-image-input"
+                                    type="file"
+                                    accept="image/png, image/gif, image/jpeg"
+                                  />
+                                </div>
+                                <div className="avatar-lg">
+                                  <div className="avatar-title bg-light rounded">
+                                    <img src="" id="product-img" className="avatar-md h-auto" />
                                   </div>
-                                </label>
-                                <input
-                                  className="form-control d-none"
-                                  //
-                                  id="product-image-input"
-                                  type="file"
-                                  accept="image/png, image/gif, image/jpeg"
-                                />
-                              </div>
-                              <div className="avatar-lg">
-                                <div className="avatar-title bg-light rounded">
-                                  <img src="" id="product-img" className="avatar-md h-auto" />
                                 </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="col-2">
-                            <div className="position-relative d-inline-block">
-                              <div className="position-absolute top-100 start-100 translate-middle">
-                                <label
-                                  htmlFor="product-image-input"
-                                  className="mb-0"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="right"
-                                  aria-label="Select Image"
-                                >
-                                  <div className="avatar-xs">
-                                    <div className="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
-                                      <i className="ri-image-fill" />
+                            <div className="col-2">
+                              <div className="position-relative d-inline-block">
+                                <div className="position-absolute top-100 start-100 translate-middle">
+                                  <label
+                                    htmlFor="product-image-input"
+                                    className="mb-0"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="right"
+                                    aria-label="Select Image"
+                                  >
+                                    <div className="avatar-xs">
+                                      <div className="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
+                                        <i className="ri-image-fill" />
+                                      </div>
                                     </div>
-                                  </div>
-                                </label>
-                                <input
-                                  className="form-control d-none"
-                                  //
-                                  id="product-image-input"
-                                  type="file"
-                                  accept="image/png, image/gif, image/jpeg"
-                                />
-                              </div>
-                              <div className="avatar-lg">
-                                <div className="avatar-title bg-light rounded">
-                                  <img src="" id="product-img" className="avatar-md h-auto" />
+                                  </label>
+                                  <input
+                                    className="form-control d-none"
+                                    //
+                                    id="product-image-input"
+                                    type="file"
+                                    accept="image/png, image/gif, image/jpeg"
+                                  />
                                 </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-2">
-                            <div className="position-relative d-inline-block">
-                              <div className="position-absolute top-100 start-100 translate-middle">
-                                <label
-                                  htmlFor="product-image-input"
-                                  className="mb-0"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="right"
-                                  aria-label="Select Image"
-                                >
-                                  <div className="avatar-xs">
-                                    <div className="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
-                                      <i className="ri-image-fill" />
-                                    </div>
+                                <div className="avatar-lg">
+                                  <div className="avatar-title bg-light rounded">
+                                    <img src="" id="product-img" className="avatar-md h-auto" />
                                   </div>
-                                </label>
-                                <input
-                                  className="form-control d-none"
-                                  //
-                                  id="product-image-input"
-                                  type="file"
-                                  accept="image/png, image/gif, image/jpeg"
-                                />
-                              </div>
-                              <div className="avatar-lg">
-                                <div className="avatar-title bg-light rounded">
-                                  <img src="" id="product-img" className="avatar-md h-auto" />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-2">
-                            <div className="position-relative d-inline-block">
-                              <div className="position-absolute top-100 start-100 translate-middle">
-                                <label
-                                  htmlFor="product-image-input"
-                                  className="mb-0"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="right"
-                                  aria-label="Select Image"
-                                >
-                                  <div className="avatar-xs">
-                                    <div className="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
-                                      <i className="ri-image-fill" />
-                                    </div>
-                                  </div>
-                                </label>
-                                <input
-                                  className="form-control d-none"
-                                  //
-                                  id="product-image-input"
-                                  type="file"
-                                  accept="image/png, image/gif, image/jpeg"
-                                />
-                              </div>
-                              <div className="avatar-lg">
-                                <div className="avatar-title bg-light rounded">
-                                  <img src="" id="product-img" className="avatar-md h-auto" />
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </Row>
                     </div>
+
                     <div className="d-flex align-items-start gap-3 mt-4">
                       <button
                         type="button"
-                        className="btn btn-primary btn-label right ms-auto nexttab nexttab"
-                        data-nexttab="datainfo2-tab"
+                        className="btn btn-success btn-label right ms-auto nexttab nexttab"
+                        onClick={() => {
+                          toggleArrowTab(activeArrowTab + 1);
+                        }}
                       >
-                        <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2" />
-                        NEXT
+                        <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>
+                        ถัดไป
                       </button>
                     </div>
-                  </div>
+                  </TabPane>
 
-                  <div className="tab-pane fade " id="datainfo2" role="tabpanel" aria-labelledby="datainfo2-tab">
-                    <div className="row">
+                  <TabPane id="board-data" tabId={5}>
+                    <Row>
                       <div className="col-8 mb-4 mt-3">
-                        <div>
-                          <h5 className="mb-1">
-                            <b>รายชื่อกรรมการทั้งหมด</b>
-                          </h5>
-                        </div>
+                        <h5 className="mb-1">
+                          <b>รายชื่อกรรมการทั้งหมด</b>
+                        </h5>
                       </div>
+
                       <div className="col-4" style={{ textAlign: "right" }}>
                         <button type="button" className="btn btn-soft-primary">
                           <i className="ri-refresh-line" /> ดึงข้อมูลกรรมการจากระบบ
@@ -545,6 +542,8 @@ export const ForeignLabor = () => {
                           <i className="ri-add-line" /> เพิ่มกรรมการ
                         </button>
                       </div>
+                    </Row>
+                    <Row>
                       <div className="col-12">
                         <div className="table-responsive">
                           <table className="table align-middle table-nowrap mb-0">
@@ -630,34 +629,36 @@ export const ForeignLabor = () => {
                           </table>
                         </div>
                       </div>
-                    </div>
+                    </Row>
                     <div className="d-flex align-items-start gap-3 mt-4">
                       <button
                         type="button"
                         className="btn btn-light btn-label previestab"
-                        data-previous="datainfo1-tab"
+                        onClick={() => {
+                          toggleArrowTab(activeArrowTab - 1);
+                        }}
                       >
-                        <i className="ri-arrow-left-line label-icon align-middle fs-16 me-2" /> BACK
+                        <i className="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> ย้อนกลับ
                       </button>
                       <button
                         type="button"
                         className="btn btn-success btn-label right ms-auto nexttab nexttab"
-                        data-nexttab="datainfo3-tab"
+                        onClick={() => {
+                          toggleArrowTab(activeArrowTab + 1);
+                        }}
                       >
-                        <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2" />
-                        NEXT
+                        <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>
+                        ถัดไป
                       </button>
                     </div>
-                  </div>
+                  </TabPane>
 
-                  <div className="tab-pane fade" id="datainfo3" role="tabpanel" aria-labelledby="#datainfo3-tab">
-                    <div className="row">
+                  <TabPane id="shareholder-data" tabId={6}>
+                    <Row>
                       <div className="col-8 mb-4 mt-3">
-                        <div>
-                          <h5 className="mb-1">
-                            <b>รายชื่อผู้ถือหุ้นทั้งหมด</b>
-                          </h5>
-                        </div>
+                        <h5 className="mb-1">
+                          <b>รายชื่อผู้ถือหุ้นทั้งหมด</b>
+                        </h5>
                       </div>
                       <div className="col-4" style={{ textAlign: "right" }}>
                         <button type="button" className="btn btn-soft-primary">
@@ -672,6 +673,8 @@ export const ForeignLabor = () => {
                           <i className="ri-add-line" /> เพิ่มผู้ถือหุ้น
                         </button>
                       </div>
+                    </Row>
+                    <Row>
                       <div className="col-12">
                         <div className="table-responsive">
                           <table className="table align-middle table-nowrap mb-0">
@@ -762,35 +765,39 @@ export const ForeignLabor = () => {
                           {/* end table */}
                         </div>
                       </div>
-                    </div>
+                    </Row>
                     <div className="d-flex align-items-start gap-3 mt-4">
                       <button
                         type="button"
                         className="btn btn-light btn-label previestab"
-                        data-previous="datainfo2-tab"
+                        onClick={() => {
+                          toggleArrowTab(activeArrowTab - 1);
+                        }}
                       >
-                        <i className="ri-arrow-left-line label-icon align-middle fs-16 me-2" /> BACK
+                        <i className="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> ย้อนกลับ
                       </button>
                       <button
                         type="button"
                         className="btn btn-success btn-label right ms-auto nexttab nexttab"
-                        data-nexttab="datainfo4-tab"
+                        onClick={() => {
+                          toggleArrowTab(activeArrowTab + 1);
+                        }}
                       >
-                        <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2" />
-                        NEXT
+                        <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>
+                        ถัดไป
                       </button>
                     </div>
-                  </div>
+                  </TabPane>
 
-                  <div className="tab-pane fade" id="datainfo4" role="tabpanel" aria-labelledby="#datainfo4-tab">
-                    <div className="row">
+                  <TabPane id="manager-data" tabId={7}>
+                    <Row>
                       <div className="col-12 mb-4 mt-3">
-                        <div>
-                          <h5 className="mb-1">
-                            <b>เลือกผู้จัดการ</b>
-                          </h5>
-                        </div>
+                        <h5 className="mb-1">
+                          <b>เลือกผู้จัดการ</b>
+                        </h5>
                       </div>
+                    </Row>
+                    <Row>
                       <div className="col-12">
                         <div className="table-responsive">
                           <table className="table align-middle table-nowrap mb-0">
@@ -912,35 +919,40 @@ export const ForeignLabor = () => {
                           {/* end table */}
                         </div>
                       </div>
-                    </div>
+                    </Row>
+
                     <div className="d-flex align-items-start gap-3 mt-4">
                       <button
                         type="button"
                         className="btn btn-light btn-label previestab"
-                        data-previous="datainfo3-tab"
+                        onClick={() => {
+                          toggleArrowTab(activeArrowTab - 1);
+                        }}
                       >
-                        <i className="ri-arrow-left-line label-icon align-middle fs-16 me-2" /> BACK
+                        <i className="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> ย้อนกลับ
                       </button>
                       <button
                         type="button"
                         className="btn btn-success btn-label right ms-auto nexttab nexttab"
-                        data-nexttab="datainfo5-tab"
+                        onClick={() => {
+                          toggleArrowTab(activeArrowTab + 1);
+                        }}
                       >
-                        <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2" />
-                        NEXT
+                        <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>
+                        Submit
                       </button>
                     </div>
-                  </div>
+                  </TabPane>
 
-                  <div className="tab-pane fade" id="datainfo5" role="tabpanel" aria-labelledby="#datainfo5-tab">
-                    <div className="row">
+                  <TabPane id="document-data" tabId={8}>
+                    <Row>
                       <div className="col-12 mb-4 mt-3">
-                        <div>
-                          <h5 className="mb-1">
-                            <b>เอกสารประกอบ</b>
-                          </h5>
-                        </div>
+                        <h5 className="mb-1">
+                          <b>เอกสารประกอบ</b>
+                        </h5>
                       </div>
+                    </Row>
+                    <Row>
                       <div className="col-12">
                         <div className="row mb-5 mt-10">
                           {/*begin::Label*/}
@@ -1032,35 +1044,40 @@ export const ForeignLabor = () => {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Row>
+
                     <div className="d-flex align-items-start gap-3 mt-4">
                       <button
                         type="button"
                         className="btn btn-light btn-label previestab"
-                        data-previous="datainfo4-tab"
+                        onClick={() => {
+                          toggleArrowTab(activeArrowTab - 1);
+                        }}
                       >
-                        <i className="ri-arrow-left-line label-icon align-middle fs-16 me-2" /> BACK
+                        <i className="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> ย้อนกลับ
                       </button>
                       <button
                         type="button"
                         className="btn btn-success btn-label right ms-auto nexttab nexttab"
-                        data-nexttab="datainfo6-tab"
+                        onClick={() => {
+                          toggleArrowTab(activeArrowTab + 1);
+                        }}
                       >
-                        <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2" />
-                        NEXT
+                        <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>
+                        Submit
                       </button>
                     </div>
-                  </div>
+                  </TabPane>
 
-                  <div className="tab-pane fade" id="datainfo6" role="tabpanel" aria-labelledby="#datainfo6-tab">
-                    <div className="row">
-                      <div className="col-8 mb-4 mt-3">
-                        <div>
-                          <h5 className="mb-1">
-                            <b>รายการหลักประกัน</b>
-                          </h5>
-                        </div>
+                  <TabPane id="document-data" tabId={9}>
+                    <Row>
+                      <div className="col-12 mb-4 mt-3">
+                        <h5 className="mb-1">
+                          <b>หลักประกัน</b>
+                        </h5>
                       </div>
+                    </Row>
+                    <Row>
                       <div className="col-12 mb-3" style={{ borderBottom: "solid 1px #eee" }}>
                         <div className="form-group">
                           <table className="table align-middle table-nowrap mb-0">
@@ -1115,36 +1132,42 @@ export const ForeignLabor = () => {
                       <div className="col-12">
                         <div className="row mb-5">
                           <div className="col-4">
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder=""
-                              value="5,000,000,000 (\u0E2B\u0E49\u0E32\u0E25\u0E49\u0E32\u0E19\u0E1A\u0E32\u0E17\u0E16\u0E49\u0E27\u0E19)"
-                            />
+                            <input type="text" className="form-control" placeholder="" value="5,000,000,000" />
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Row>
+
                     <div className="d-flex align-items-start gap-3 mt-4">
                       <button
                         type="button"
                         className="btn btn-light btn-label previestab"
-                        data-previous="datainfo4-tab"
+                        onClick={() => {
+                          toggleArrowTab(activeArrowTab - 1);
+                        }}
                       >
-                        <i className="ri-arrow-left-line label-icon align-middle fs-16 me-2" /> BACK
+                        <i className="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> ย้อนกลับ
                       </button>
-                      <button type="button" className="btn btn-success btn-label right ms-auto">
-                        <i className="ri-save-line" /> บันทึกข้อมูล
+                      <button
+                        type="button"
+                        className="btn btn-success btn-label right ms-auto nexttab nexttab"
+                        onClick={() => {
+                          console.log("Submit");
+                        }}
+                      >
+                        <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>
+                        Submit
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                  </TabPane>
+                </TabContent>
+              </Form>
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
 
+      {/* modal เพิ่มรายชื่อ */}
       <div
         className="modal fade"
         id="staticBackdrop"
@@ -1464,14 +1487,10 @@ export const ForeignLabor = () => {
 
               <div className="mt-4">
                 <div className="hstack gap-2 justify-content-center">
-                  <a
-                    href="javascript:void(0);"
-                    className="btn btn-soft-secondary link-success fw-medium"
-                    data-bs-dismiss="modal"
-                  >
+                  <a href="#" className="btn btn-soft-secondary link-success fw-medium" data-bs-dismiss="modal">
                     <i className="ri-close-line me-1 align-middle" /> ยกเลิก
                   </a>
-                  <a href="javascript:void(0);" className="btn btn-success">
+                  <a href="#" className="btn btn-success">
                     <i className="ri-save-line" /> บันทึกข้อมูล
                   </a>
                 </div>
@@ -1481,6 +1500,7 @@ export const ForeignLabor = () => {
         </div>
       </div>
 
+      {/* modal หลักประกัน */}
       <div
         id="myModal"
         className="modal fade"

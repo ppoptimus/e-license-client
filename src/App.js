@@ -12,10 +12,11 @@ import { RequestLicense } from "./pages/License/RequestLicense";
 import { RenewLicense } from "./pages/License/RenewLicense";
 import { CancelLicense } from "./pages/License/CancelLicense";
 import { ChooseLicense } from "./pages/License/ChooseLicense";
-import { ForeignLabor } from "./pages/License/LicenseType/ForeignLabor";
-import { ExportLabor } from "./pages/License/LicenseType/ExportLabor";
-import { ShipLabor } from "./pages/License/LicenseType/ShipLabor";
-import { DomesticLabor } from "./pages/License/LicenseType/DomesticLabor";
+import { TestTab } from "./ForTest-WaitDelete/TestTab";
+import { ExportLabor } from "./pages/License/NewLicense/ExportLabor";
+import { ShipLabor } from "./pages/License/NewLicense/ShipLabor";
+import { DomesticLabor } from "./pages/License/NewLicense/DomesticLabor";
+import { ForeignLabor } from "./pages/License/NewLicense/ForeignLabor";
 
 const routes = [{ path: "/login" }];
 
