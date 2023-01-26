@@ -1,39 +1,51 @@
-import React, { useState } from "react";
-import {
-  Card,
-  CardBody,
-  Col,
-  Form,
-  Nav,
-  NavItem,
-  NavLink,
-  Row,
-  TabContent,
-  TabPane,
-} from "reactstrap";
+import React, { useState, useEffect } from "react";
+import { Card, CardBody, Col, Form, Nav, NavItem, NavLink, Row, TabContent, TabPane } from "reactstrap";
+import Flatpickr from "react-flatpickr";
 import classnames from "classnames";
 
 export const ForeignLabor = () => {
-  const [activeArrowTab, setactiveArrowTab] = useState(4);
-  const [passedarrowSteps, setPassedarrowSteps] = useState([1]);
-  const [companyData, setcompanyData] = useState(
-    {
-      juristicNo : "0123456789012",
-      juristicType : "บริษัทจำกัด",
-      regisDate : "10/01/1990",
-      companyName : "บริษัท ทีซีเอ็ม จำกัด มหาชน",
-      companyEmail : "t.cm@tmc.com",
-      registeredCapital : "1,500,000",
-      addressNo : "199/100",
-      moo : "7",
-      soi : "-",
-      road : "รัชดาภิเษก",
-      zipcode : "10110",
-      telephoneNo : "02 661 8884",
-    }
-  )
+  let currentDate = "";
+  useEffect(() => {
+    const dateNow = new Date();
+    currentDate = formatDate(dateNow);
+    console.log(formatDate(dateNow));
+  }, []);
 
-  function toggleArrowTab(tab) {
+  const object = {
+    juristicNo: "0123456789012",
+    juristicType: "บริษัทจำกัด",
+    regisDate: "10/01/1990",
+    companyName: "บริษัท ทีซีเอ็ม จำกัด มหาชน",
+    companyEmail: "t.cm@tmc.com",
+    registeredCapital: "1,500,000",
+    addressNo: "199/100",
+    moo: "7",
+    soi: "-",
+    road: "รัชดาภิเษก",
+    zipcode: "10110",
+    telephoneNo: "02 661 8884",
+  };
+  const [activeArrowTab, setactiveArrowTab] = useState(1);
+  const [passedarrowSteps, setPassedarrowSteps] = useState([1]);
+  const [juristicNumber, setJuristicNumber] = useState();
+  const [companyData, setcompanyData] = useState({});
+
+  const [getProvince, setGetProvince] = useState([
+    { value: "0", label: "เลือกจังหวัด" },
+    { value: "1", label: "Choices 1" },
+    { value: "2", label: "Choices 2" },
+  ]);
+
+  const [selectedProvince, setSelectedProvince] = useState(null);
+
+  const handleSelectProvince = (e) => {
+    setSelectedProvince(e);
+    console.log(selectedProvince);
+  };
+
+  const onJuristicTypeChange = (e) => {};
+
+  const toggleArrowTab = (tab) => {
     if (activeArrowTab !== tab) {
       var modifiedSteps = [...passedarrowSteps, tab];
 
@@ -42,11 +54,26 @@ export const ForeignLabor = () => {
         setPassedarrowSteps(modifiedSteps);
       }
     }
-  }
+  };
 
-  const onJuristicNoSearch = () => {
-    console.log("search")
-  }
+  const onJuristicChange = (e) => {
+    setJuristicNumber(e.target.value);
+  };
+
+  const onJuristicSearch = () => {
+    console.log(juristicNumber);
+    setcompanyData(object);
+  };
+
+  const formatDate = (date) => {
+    let dd = date.getDate();
+    let mm = date.getMonth() + 1;
+    let yy = date.getFullYear();
+    return `${dd < 10 ? `0${dd}` : `${dd}`}
+    /${mm < 10 ? `0${mm}` : `${mm}`}
+    /${yy}`;
+  };
+
   return (
     <>
       <Row>
@@ -164,7 +191,7 @@ export const ForeignLabor = () => {
 
                 <TabContent activeTab={activeArrowTab}>
                   <TabPane id="company-data" tabId={1}>
-                    <div>
+                    <>
                       <Row>
                         <div className="mb-4">
                           <h5 className="mb-1">
@@ -175,58 +202,78 @@ export const ForeignLabor = () => {
                       <Row>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label">
-                              เลขที่นิติบุคคล
-                            </label>
+                            <label className="form-label">เลขที่นิติบุคคล</label>
 
                             <div className="search">
-                              <input type="text" className="form-control" placeholder="Search..." />
-                              <button type="button" className="btn btn-secondary p-0" onClick={onJuristicNoSearch}>
+                              <input
+                                type="text"
+                                className="form-control"
+                                placeholder="เลขที่นิติบุคคล..."
+                                onChange={onJuristicChange}
+                              />
+                              <button type="button" className="btn btn-secondary p-0" onClick={onJuristicSearch}>
                                 <i className="ri-search-line" />
                               </button>
                             </div>
-
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label">
-                              ประเภทนิติบุคคล
-                            </label>
-                            <input type="text" className="form-control" placeholder="" />
+                            <label className="form-label">ประเภทนิติบุคคล</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="บริษัทจำกัด"
+                              onChange={onJuristicTypeChange}
+                              value={companyData ? companyData.juristicType : ""}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label">
-                              วันที่จดทะเบียน
-                            </label>
-                            <input type="date" className="form-control" id="exampleInputdate" />
+                            <label className="form-label">วันที่จดทะเบียน</label>
+                            <Flatpickr
+                              className="form-control"
+                              options={{
+                                maxDate: new Date(),
+                                dateFormat: "d/m/Y",
+                                defaultDate: [currentDate.toString()],
+                              }}
+                              value={companyData ? companyData.regisDate : currentDate}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-8">
                           <div className="mb-3">
-                            <label className="form-label">
-                              ชื่อ
-                            </label>
-                            <input type="text" className="form-control" placeholder="" />
+                            <label className="form-label">ชื่อ</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="ชื่อบริษัท"
+                              value={companyData ? companyData.companyName : ""}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label">
-                              อีเมล
-                            </label>
-                            <input type="email" className="form-control form-control-icon" id="iconInput" />
+                            <label className="form-label">อีเมล</label>
+                            <input
+                              type="email"
+                              className="form-control form-control-icon"
+                              value={companyData ? companyData.companyEmail : ""}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-8">
                           <div className="mb-3">
-                            <label className="form-label">
-                              ทุนจดทะเบียน
-                            </label>
-                            <input type="text" className="form-control" placeholder="" />
-                            <div id="passwordHelpBlock" className="form-text" style={{ color: "red" }}>
+                            <label className="form-label">ทุนจดทะเบียน</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder=""
+                              value={companyData ? companyData.registeredCapital : ""}
+                            />
+                            <div className="form-text text-danger">
                               มาตรา 31(1) ทุนจดทะเบียนและชำระแล้วไม่ต่ำกว่า 1,000,000 บาท
                             </div>
                           </div>
@@ -240,80 +287,101 @@ export const ForeignLabor = () => {
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label">
-                              เลขที่
-                            </label>
-                            <input type="text" className="form-control" placeholder="" />
+                            <label className="form-label">เลขที่</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder=""
+                              value={companyData ? companyData.addressNo : ""}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label">
-                              หมู่ที่
-                            </label>
-                            <input type="text" className="form-control" placeholder="" />
+                            <label className="form-label">หมู่ที่</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder=""
+                              value={companyData ? companyData.moo : ""}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label">
-                              ตรอก/ซอย
-                            </label>
-                            <input type="text" className="form-control" placeholder="" />
+                            <label className="form-label">ตรอก/ซอย</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder=""
+                              value={companyData ? companyData.soi : ""}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label">
-                              ถนน
-                            </label>
-                            <input type="text" className="form-control" placeholder="" />
+                            <label className="form-label">ถนน</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder=""
+                              value={companyData ? companyData.road : ""}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label">
-                              จังหวัด
-                            </label>
-                            <select className="form-select mb-3" aria-label="Default select example">
-                              <option selected={true}>เลือกจังหวัด</option>
+                            <label className="form-label">จังหวัด</label>
+                            <select
+                              className="form-select mb-3"
+                              onChange={(e) => {
+                                handleSelectProvince(e.target.value);
+                              }}
+                            >
+                              {getProvince.map((item, index) => (
+                                <option key={index} value={item.label}>
+                                  {item.label}
+                                </option>
+                              ))}
                             </select>
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label">
-                              อำเภอ
-                            </label>
+                            <label className="form-label">อำเภอ</label>
                             <select className="form-select mb-3" aria-label="Default select example">
-                              <option selected={true}>เลือกอำเภอ</option>
+                              <option>เลือกอำเภอ</option>
                             </select>
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label">
-                              ตำบล/แขวง
-                            </label>
+                            <label className="form-label">ตำบล/แขวง</label>
                             <select className="form-select mb-3" aria-label="Default select example">
-                              <option selected={true}>เลือกตำบล/แขวง</option>
+                              <option>เลือกตำบล/แขวง</option>
                             </select>
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label">
-                              รหัสไปรษณีย์
-                            </label>
-                            <input type="text" className="form-control" placeholder="" />
+                            <label className="form-label">รหัสไปรษณีย์</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder=""
+                              value={companyData ? companyData.zipcode : ""}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
-                            <label className="form-label">
-                              หมายเลขโทรศัพท์
-                            </label>
-                            <input type="text" className="form-control" placeholder="" />
+                            <label className="form-label">หมายเลขโทรศัพท์</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder=""
+                              value={companyData ? companyData.telephoneNo : ""}
+                            />
                           </div>
                         </div>
                       </Row>
@@ -521,7 +589,7 @@ export const ForeignLabor = () => {
                           </div>
                         </div>
                       </Row> */}
-                    </div>
+                    </>
 
                     <div className="d-flex align-items-start gap-3 mt-4">
                       <button
@@ -821,12 +889,7 @@ export const ForeignLabor = () => {
                               <tr>
                                 <th scope="col" style={{ width: 42 }}>
                                   <div className="form-check">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      
-                                      id="responsivetableCheck"
-                                    />
+                                    <input className="form-check-input" type="checkbox" id="responsivetableCheck" />
                                     <label className="form-check-label" htmlFor="responsivetableCheck" />
                                   </div>
                                 </th>
@@ -840,12 +903,7 @@ export const ForeignLabor = () => {
                               <tr>
                                 <th scope="row">
                                   <div className="form-check">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      
-                                      id="responsivetableCheck01"
-                                    />
+                                    <input className="form-check-input" type="checkbox" id="responsivetableCheck01" />
                                     <label className="form-check-label" htmlFor="responsivetableCheck01" />
                                   </div>
                                 </th>
@@ -871,12 +929,7 @@ export const ForeignLabor = () => {
                               <tr>
                                 <th scope="row">
                                   <div className="form-check">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      
-                                      id="responsivetableCheck01"
-                                    />
+                                    <input className="form-check-input" type="checkbox" id="responsivetableCheck01" />
                                     <label className="form-check-label" htmlFor="responsivetableCheck01" />
                                   </div>
                                 </th>
@@ -902,12 +955,7 @@ export const ForeignLabor = () => {
                               <tr>
                                 <th scope="row">
                                   <div className="form-check">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      
-                                      id="responsivetableCheck01"
-                                    />
+                                    <input className="form-check-input" type="checkbox" id="responsivetableCheck01" />
                                     <label className="form-check-label" htmlFor="responsivetableCheck01" />
                                   </div>
                                 </th>
@@ -932,7 +980,6 @@ export const ForeignLabor = () => {
                               </tr>
                             </tbody>
                           </table>
-                          
                         </div>
                       </div>
                     </Row>
@@ -1316,7 +1363,7 @@ export const ForeignLabor = () => {
                       คำนำหน้าชื่อ
                     </label>
                     <select className="form-select mb-3" aria-label="Default select example">
-                      <option selected={true}>เลือกคำนำหน้าชื่อ</option>
+                      <option>เลือกคำนำหน้าชื่อ</option>
                     </select>
                   </div>
                 </div>
@@ -1342,7 +1389,7 @@ export const ForeignLabor = () => {
                       คำนำหน้าชื่อ (ภาษาอังกฤษ)
                     </label>
                     <select className="form-select mb-3" aria-label="Default select example">
-                      <option selected={true}>เลือกคำนำหน้าชื่อ</option>
+                      <option>เลือกคำนำหน้าชื่อ</option>
                     </select>
                   </div>
                 </div>
@@ -1392,7 +1439,7 @@ export const ForeignLabor = () => {
                       ออกให้ ณ จังหวัด
                     </label>
                     <select className="form-select mb-3" aria-label="Default select example">
-                      <option selected={true}>เลือกจังหวัด</option>
+                      <option>เลือกจังหวัด</option>
                     </select>
                   </div>
                 </div>
@@ -1402,7 +1449,7 @@ export const ForeignLabor = () => {
                       อำเภอ
                     </label>
                     <select className="form-select mb-3" aria-label="Default select example">
-                      <option selected={true}>เลือกอำเภอ</option>
+                      <option>เลือกอำเภอ</option>
                     </select>
                   </div>
                 </div>
@@ -1459,7 +1506,7 @@ export const ForeignLabor = () => {
                       จังหวัด
                     </label>
                     <select className="form-select mb-3" aria-label="Default select example">
-                      <option selected={true}>เลือกจังหวัด</option>
+                      <option>เลือกจังหวัด</option>
                     </select>
                   </div>
                 </div>
@@ -1469,7 +1516,7 @@ export const ForeignLabor = () => {
                       อำเภอ
                     </label>
                     <select className="form-select mb-3" aria-label="Default select example">
-                      <option selected={true}>เลือกอำเภอ</option>
+                      <option>เลือกอำเภอ</option>
                     </select>
                   </div>
                 </div>
@@ -1479,7 +1526,7 @@ export const ForeignLabor = () => {
                       ตำบล/แขวง
                     </label>
                     <select className="form-select mb-3" aria-label="Default select example">
-                      <option selected={true}>เลือกตำบล/แขวง</option>
+                      <option>เลือกตำบล/แขวง</option>
                     </select>
                   </div>
                 </div>
