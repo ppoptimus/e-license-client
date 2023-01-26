@@ -4,11 +4,26 @@ import Flatpickr from "react-flatpickr";
 import classnames from "classnames";
 
 export const ForeignLabor = () => {
+  const [activeArrowTab, setactiveArrowTab] = useState(1);
+  const [passedarrowSteps, setPassedarrowSteps] = useState([1]);
+  const [juristicNumber, setJuristicNumber] = useState();
+  const [companyData, setcompanyData] = useState({});
+  const [getProvince, setGetProvince] = useState([]);
+  const [getDistrict, setGetDistrict] = useState([]);
+  const [getArea, setGetArea] = useState([]);
+
+  const [district, setDistrict] = useState([]);
+  const [area, setArea] = useState([]);
+
   let currentDate = "";
   useEffect(() => {
     const dateNow = new Date();
     currentDate = formatDate(dateNow);
-    console.log(formatDate(dateNow));
+    fetchAPIProvince();
+    fetchAPIDistrict();
+    fetchAPIArea();
+    setDefaultDistrict()
+    setDefaultArea()
   }, []);
 
   const object = {
@@ -25,23 +40,68 @@ export const ForeignLabor = () => {
     zipcode: "10110",
     telephoneNo: "02 661 8884",
   };
-  const [activeArrowTab, setactiveArrowTab] = useState(1);
-  const [passedarrowSteps, setPassedarrowSteps] = useState([1]);
-  const [juristicNumber, setJuristicNumber] = useState();
-  const [companyData, setcompanyData] = useState({});
 
-  const [getProvince, setGetProvince] = useState([
-    { value: "0", label: "เลือกจังหวัด" },
-    { value: "1", label: "Choices 1" },
-    { value: "2", label: "Choices 2" },
-  ]);
-
-  const [selectedProvince, setSelectedProvince] = useState(null);
+  const fetchAPIProvince = () => {
+    fetch("https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province.json")
+      .then((response) => response.json())
+      .then((result) => {
+        setGetProvince(result);
+      });
+  };
+  const fetchAPIDistrict = () => {
+    fetch("https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_amphure.json")
+      .then((response) => response.json())
+      .then((result) => {
+        setGetDistrict(result);
+      });
+  };
+  const fetchAPIArea = () => {
+    fetch("https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_tambon.json")
+      .then((response) => response.json())
+      .then((result) => {
+        setGetArea(result);
+      });
+  };
 
   const handleSelectProvince = (e) => {
-    setSelectedProvince(e);
-    console.log(selectedProvince);
+    filterDistrict(e);
   };
+
+  const handleSelectDistrict = (e) => {
+    filterArea(e);
+  };
+
+  const handleSelectArea = (e) => {
+
+  }
+
+  const setDefaultDistrict = () => {
+    const districtArr = getDistrict.filter((obj) => {
+      return obj.province_id == 1;
+    });
+    setDistrict(districtArr);
+  }
+  const setDefaultArea = () => {
+    const areaArr = getArea.filter((obj) => {
+      return obj.amphure_id == 1001;
+    });
+    setArea(areaArr);
+  }
+
+  const filterDistrict = (id) => {
+    const districtArr = getDistrict.filter((obj) => {
+      return obj.province_id == id;
+    });
+    setDistrict(districtArr);
+  };
+
+  const filterArea = (id) => {
+    const areaArr = getArea.filter((obj) => {
+      return obj.amphure_id == id;
+    });
+    setArea(areaArr);
+  }
+
 
   const onJuristicTypeChange = (e) => {};
 
@@ -339,8 +399,8 @@ export const ForeignLabor = () => {
                               }}
                             >
                               {getProvince.map((item, index) => (
-                                <option key={index} value={item.label}>
-                                  {item.label}
+                                <option key={index} value={item.id}>
+                                  {item.name_th}
                                 </option>
                               ))}
                             </select>
@@ -349,16 +409,36 @@ export const ForeignLabor = () => {
                         <div className="col-lg-4">
                           <div className="mb-3">
                             <label className="form-label">อำเภอ</label>
-                            <select className="form-select mb-3" aria-label="Default select example">
-                              <option>เลือกอำเภอ</option>
+                            <select
+                              className="form-select mb-3"
+                              onChange={(e) => {
+                                handleSelectDistrict(e.target.value);
+                              }}
+                            >
+                              {district
+                                ? district.map((item, index) => (
+                                    <option key={index} value={item.id}>
+                                      {item.name_th}
+                                    </option>
+                                  ))
+                                : ""}
                             </select>
                           </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
                             <label className="form-label">ตำบล/แขวง</label>
-                            <select className="form-select mb-3" aria-label="Default select example">
-                              <option>เลือกตำบล/แขวง</option>
+                            <select
+                              className="form-select mb-3"
+                              onChange={(e) => {
+                                handleSelectArea(e.target.value);
+                              }}
+                            >
+                              {area.map((item, index) => (
+                                <option key={index} value={item.id}>
+                                  {item.name_th}
+                                </option>
+                              ))}
                             </select>
                           </div>
                         </div>
