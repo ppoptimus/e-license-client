@@ -7,13 +7,18 @@ export const ForeignLabor = () => {
   const [activeArrowTab, setactiveArrowTab] = useState(1);
   const [passedarrowSteps, setPassedarrowSteps] = useState([1]);
   const [juristicNumber, setJuristicNumber] = useState();
-  const [companyData, setcompanyData] = useState({});
-  const [getProvince, setGetProvince] = useState([]);
-  const [getDistrict, setGetDistrict] = useState([]);
-  const [getArea, setGetArea] = useState([]);
+  const [getDatafromDBD, setGetDatafromDBD] = useState({});
+  const [getAllProvince, setGetProvince] = useState([]);
+  const [getAllDistrict, setGetDistrict] = useState([]);
+  const [getAllArea, setGetArea] = useState([]);
 
   const [district, setDistrict] = useState([]);
   const [area, setArea] = useState([]);
+
+  const [companyData, setCompanyData] = useState({
+    juristicType: null,
+    regisDate: null,
+  });
 
   let currentDate = "";
   useEffect(() => {
@@ -22,8 +27,8 @@ export const ForeignLabor = () => {
     fetchAPIProvince();
     fetchAPIDistrict();
     fetchAPIArea();
-    setDefaultDistrict()
-    setDefaultArea()
+    setDefaultDistrict();
+    setDefaultArea();
   }, []);
 
   const object = {
@@ -41,6 +46,17 @@ export const ForeignLabor = () => {
     telephoneNo: "02 661 8884",
   };
 
+  const toggleArrowTab = (tab) => {
+    if (activeArrowTab !== tab) {
+      var modifiedSteps = [...passedarrowSteps, tab];
+
+      if (tab >= 1 && tab <= 7) {
+        setactiveArrowTab(tab);
+        setPassedarrowSteps(modifiedSteps);
+      }
+    }
+  };
+
   const fetchAPIProvince = () => {
     fetch("https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province.json")
       .then((response) => response.json())
@@ -48,6 +64,7 @@ export const ForeignLabor = () => {
         setGetProvince(result);
       });
   };
+
   const fetchAPIDistrict = () => {
     fetch("https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_amphure.json")
       .then((response) => response.json())
@@ -55,6 +72,7 @@ export const ForeignLabor = () => {
         setGetDistrict(result);
       });
   };
+
   const fetchAPIArea = () => {
     fetch("https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_tambon.json")
       .then((response) => response.json())
@@ -71,49 +89,34 @@ export const ForeignLabor = () => {
     filterArea(e);
   };
 
-  const handleSelectArea = (e) => {
-
-  }
+  const handleSelectArea = (e) => {};
 
   const setDefaultDistrict = () => {
-    const districtArr = getDistrict.filter((obj) => {
+    const districtArr = getAllDistrict.filter((obj) => {
       return obj.province_id == 1;
     });
     setDistrict(districtArr);
-  }
+  };
+
   const setDefaultArea = () => {
-    const areaArr = getArea.filter((obj) => {
+    const areaArr = getAllArea.filter((obj) => {
       return obj.amphure_id == 1001;
     });
     setArea(areaArr);
-  }
+  };
 
   const filterDistrict = (id) => {
-    const districtArr = getDistrict.filter((obj) => {
+    const districtArr = getAllDistrict.filter((obj) => {
       return obj.province_id == id;
     });
     setDistrict(districtArr);
   };
 
   const filterArea = (id) => {
-    const areaArr = getArea.filter((obj) => {
+    const areaArr = getAllArea.filter((obj) => {
       return obj.amphure_id == id;
     });
     setArea(areaArr);
-  }
-
-
-  const onJuristicTypeChange = (e) => {};
-
-  const toggleArrowTab = (tab) => {
-    if (activeArrowTab !== tab) {
-      var modifiedSteps = [...passedarrowSteps, tab];
-
-      if (tab >= 1 && tab <= 7) {
-        setactiveArrowTab(tab);
-        setPassedarrowSteps(modifiedSteps);
-      }
-    }
   };
 
   const onJuristicChange = (e) => {
@@ -121,8 +124,22 @@ export const ForeignLabor = () => {
   };
 
   const onJuristicSearch = () => {
-    console.log(juristicNumber);
-    setcompanyData(object);
+    if (juristicNumber) {
+      setGetDatafromDBD(object);
+    }
+  };
+
+  const handleInputChange = (name) => (e) => {
+    if (name === "regisDate") {
+      console.log(e)
+      e = formatDate(e);
+      setCompanyData({ ...companyData, [name]: e });
+    }
+    setCompanyData({ ...companyData, [name]: e.target.value });
+  };
+
+  const onNextStep1 = () => {
+    console.log(companyData);
   };
 
   const formatDate = (date) => {
@@ -284,8 +301,8 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder="บริษัทจำกัด"
-                              onChange={onJuristicTypeChange}
-                              value={companyData ? companyData.juristicType : ""}
+                              onChange={handleInputChange("juristicType")}
+                              value={getDatafromDBD ? getDatafromDBD.juristicType : ""}
                             />
                           </div>
                         </div>
@@ -299,7 +316,7 @@ export const ForeignLabor = () => {
                                 dateFormat: "d/m/Y",
                                 defaultDate: [currentDate.toString()],
                               }}
-                              value={companyData ? companyData.regisDate : currentDate}
+                              onChange={handleInputChange("regisDate")}
                             />
                           </div>
                         </div>
@@ -310,7 +327,7 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder="ชื่อบริษัท"
-                              value={companyData ? companyData.companyName : ""}
+                              value={getDatafromDBD ? getDatafromDBD.companyName : ""}
                             />
                           </div>
                         </div>
@@ -320,7 +337,7 @@ export const ForeignLabor = () => {
                             <input
                               type="email"
                               className="form-control form-control-icon"
-                              value={companyData ? companyData.companyEmail : ""}
+                              value={getDatafromDBD ? getDatafromDBD.companyEmail : ""}
                             />
                           </div>
                         </div>
@@ -331,7 +348,7 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={companyData ? companyData.registeredCapital : ""}
+                              value={getDatafromDBD ? getDatafromDBD.registeredCapital : ""}
                             />
                             <div className="form-text text-danger">
                               มาตรา 31(1) ทุนจดทะเบียนและชำระแล้วไม่ต่ำกว่า 1,000,000 บาท
@@ -352,7 +369,7 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={companyData ? companyData.addressNo : ""}
+                              value={getDatafromDBD ? getDatafromDBD.addressNo : ""}
                             />
                           </div>
                         </div>
@@ -363,7 +380,7 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={companyData ? companyData.moo : ""}
+                              value={getDatafromDBD ? getDatafromDBD.moo : ""}
                             />
                           </div>
                         </div>
@@ -374,7 +391,7 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={companyData ? companyData.soi : ""}
+                              value={getDatafromDBD ? getDatafromDBD.soi : ""}
                             />
                           </div>
                         </div>
@@ -385,7 +402,7 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={companyData ? companyData.road : ""}
+                              value={getDatafromDBD ? getDatafromDBD.road : ""}
                             />
                           </div>
                         </div>
@@ -398,7 +415,7 @@ export const ForeignLabor = () => {
                                 handleSelectProvince(e.target.value);
                               }}
                             >
-                              {getProvince.map((item, index) => (
+                              {getAllProvince.map((item, index) => (
                                 <option key={index} value={item.id}>
                                   {item.name_th}
                                 </option>
@@ -449,7 +466,7 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={companyData ? companyData.zipcode : ""}
+                              value={getDatafromDBD ? getDatafromDBD.zipcode : ""}
                             />
                           </div>
                         </div>
@@ -460,7 +477,7 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={companyData ? companyData.telephoneNo : ""}
+                              value={getDatafromDBD ? getDatafromDBD.telephoneNo : ""}
                             />
                           </div>
                         </div>
@@ -677,6 +694,9 @@ export const ForeignLabor = () => {
                         className="btn btn-success btn-label right ms-auto nexttab nexttab"
                         onClick={() => {
                           toggleArrowTab(activeArrowTab + 1);
+                          {
+                            onNextStep1();
+                          }
                         }}
                       >
                         <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>
