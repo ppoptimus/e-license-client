@@ -12,12 +12,29 @@ export const ForeignLabor = () => {
   const [getAllDistrict, setGetDistrict] = useState([]);
   const [getAllArea, setGetArea] = useState([]);
 
-  const [district, setDistrict] = useState([]);
-  const [area, setArea] = useState([]);
+  const [filteredDistrict, setFilteredDistrict] = useState([]);
+  const [filteredArea, setFilteredArea] = useState([]);
+
+  const [selectedProvince, setSelectedProvince] = useState(null)
+  const [selectedDistrict, setSelectedDistrict] = useState(null)
+  const [selectedArea, setSelectedArea] = useState(null)
 
   const [companyData, setCompanyData] = useState({
+    juristicNo:null,
     juristicType: null,
     regisDate: null,
+    companyName:null,
+    companyEmail: null,
+    registeredCapital: null,
+    addressNo:null,
+    moo: null,
+    soi: null,
+    road: null,
+    area:selectedArea,
+    district:selectedDistrict,
+    province:selectedProvince,
+    zipcode: null,
+    telephoneNo: null,
   });
 
   let currentDate = "";
@@ -82,60 +99,80 @@ export const ForeignLabor = () => {
   };
 
   const handleSelectProvince = (e) => {
+   
     filterDistrict(e);
+    const provinceName = getAllProvince.find(i=>{
+      return i.id == e
+    })
+    setCompanyData({ ...companyData, ["province"]: provinceName.name_th });
   };
 
   const handleSelectDistrict = (e) => {
+    
     filterArea(e);
+    const districtName = filteredDistrict.find(i=>{
+      return i.id == e
+    })
+    setCompanyData({ ...companyData, ["district"]: districtName.name_th });
   };
 
-  const handleSelectArea = (e) => {};
+  const handleSelectArea = (e) => {
+    const areaName = filteredArea.find(i=>{
+      return i.id == e
+    })
+    setCompanyData({ ...companyData, ["area"]: areaName.name_th });
+  };
 
   const setDefaultDistrict = () => {
     const districtArr = getAllDistrict.filter((obj) => {
       return obj.province_id == 1;
     });
-    setDistrict(districtArr);
+    setFilteredDistrict(districtArr);
   };
 
   const setDefaultArea = () => {
     const areaArr = getAllArea.filter((obj) => {
       return obj.amphure_id == 1001;
     });
-    setArea(areaArr);
+    setFilteredArea(areaArr);
   };
 
   const filterDistrict = (id) => {
     const districtArr = getAllDistrict.filter((obj) => {
       return obj.province_id == id;
     });
-    setDistrict(districtArr);
+    setFilteredDistrict(districtArr);
   };
 
   const filterArea = (id) => {
     const areaArr = getAllArea.filter((obj) => {
       return obj.amphure_id == id;
     });
-    setArea(areaArr);
-  };
-
-  const onJuristicChange = (e) => {
-    setJuristicNumber(e.target.value);
+    setFilteredArea(areaArr);
   };
 
   const onJuristicSearch = () => {
-    if (juristicNumber) {
+    if (companyData.juristicNo) {
       setGetDatafromDBD(object);
     }
   };
 
   const handleInputChange = (name) => (e) => {
     if (name === "regisDate") {
-      console.log(e)
-      e = formatDate(e);
-      setCompanyData({ ...companyData, [name]: e });
+      let dd = e[0].getDate()
+      let mm = e[0].getMonth() +1
+      let yy = e[0].getFullYear()
+      let fullDate = `${dd < 10 ? `0${dd}` : `${dd}`}/${mm < 10 ? `0${mm}` : `${mm}`}/${yy}`
+
+      setCompanyData({ ...companyData, [name]: fullDate });
     }
-    setCompanyData({ ...companyData, [name]: e.target.value });
+    else if(name === "juristicNo"){
+      setJuristicNumber(e.target.value);
+      setCompanyData({ ...companyData, [name]: e.target.value });
+    }
+    else{
+      setCompanyData({ ...companyData, [name]: e.target.value });
+    }
   };
 
   const onNextStep1 = () => {
@@ -286,7 +323,7 @@ export const ForeignLabor = () => {
                                 type="text"
                                 className="form-control"
                                 placeholder="เลขที่นิติบุคคล..."
-                                onChange={onJuristicChange}
+                                onChange={handleInputChange("juristicNo")}
                               />
                               <button type="button" className="btn btn-secondary p-0" onClick={onJuristicSearch}>
                                 <i className="ri-search-line" />
@@ -302,7 +339,7 @@ export const ForeignLabor = () => {
                               className="form-control"
                               placeholder="บริษัทจำกัด"
                               onChange={handleInputChange("juristicType")}
-                              value={getDatafromDBD ? getDatafromDBD.juristicType : ""}
+                              // value={getDatafromDBD ? getDatafromDBD.juristicType : ""}
                             />
                           </div>
                         </div>
@@ -327,7 +364,8 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder="ชื่อบริษัท"
-                              value={getDatafromDBD ? getDatafromDBD.companyName : ""}
+                              onChange={handleInputChange("companyName")}
+                              // value={getDatafromDBD ? getDatafromDBD.companyName : ""}
                             />
                           </div>
                         </div>
@@ -337,7 +375,8 @@ export const ForeignLabor = () => {
                             <input
                               type="email"
                               className="form-control form-control-icon"
-                              value={getDatafromDBD ? getDatafromDBD.companyEmail : ""}
+                              onChange={handleInputChange("companyEmail")}
+                              // value={getDatafromDBD ? getDatafromDBD.companyEmail : ""}
                             />
                           </div>
                         </div>
@@ -348,7 +387,8 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={getDatafromDBD ? getDatafromDBD.registeredCapital : ""}
+                              onChange={handleInputChange("registeredCapital")}
+                              // value={getDatafromDBD ? getDatafromDBD.registeredCapital : ""}
                             />
                             <div className="form-text text-danger">
                               มาตรา 31(1) ทุนจดทะเบียนและชำระแล้วไม่ต่ำกว่า 1,000,000 บาท
@@ -356,11 +396,11 @@ export const ForeignLabor = () => {
                           </div>
                         </div>
                         <div className="mb-4 mt-3">
-                          <div>
+                          
                             <h5 className="mb-1">
                               <b>ข้อมูลที่อยู่บริษัท</b>
                             </h5>
-                          </div>
+                          
                         </div>
                         <div className="col-lg-4">
                           <div className="mb-3">
@@ -369,7 +409,8 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={getDatafromDBD ? getDatafromDBD.addressNo : ""}
+                              onChange={handleInputChange("addressNo")}
+                              // value={getDatafromDBD ? getDatafromDBD.addressNo : ""}
                             />
                           </div>
                         </div>
@@ -380,7 +421,8 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={getDatafromDBD ? getDatafromDBD.moo : ""}
+                              onChange={handleInputChange("moo")}
+                              // value={getDatafromDBD ? getDatafromDBD.moo : ""}
                             />
                           </div>
                         </div>
@@ -391,7 +433,8 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={getDatafromDBD ? getDatafromDBD.soi : ""}
+                              onChange={handleInputChange("soi")}
+                              // value={getDatafromDBD ? getDatafromDBD.soi : ""}
                             />
                           </div>
                         </div>
@@ -402,7 +445,8 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={getDatafromDBD ? getDatafromDBD.road : ""}
+                              onChange={handleInputChange("road")}
+                              // value={getDatafromDBD ? getDatafromDBD.road : ""}
                             />
                           </div>
                         </div>
@@ -413,6 +457,7 @@ export const ForeignLabor = () => {
                               className="form-select mb-3"
                               onChange={(e) => {
                                 handleSelectProvince(e.target.value);
+                               
                               }}
                             >
                               {getAllProvince.map((item, index) => (
@@ -432,8 +477,8 @@ export const ForeignLabor = () => {
                                 handleSelectDistrict(e.target.value);
                               }}
                             >
-                              {district
-                                ? district.map((item, index) => (
+                              {filteredDistrict
+                                ? filteredDistrict.map((item, index) => (
                                     <option key={index} value={item.id}>
                                       {item.name_th}
                                     </option>
@@ -451,7 +496,7 @@ export const ForeignLabor = () => {
                                 handleSelectArea(e.target.value);
                               }}
                             >
-                              {area.map((item, index) => (
+                              {filteredArea.map((item, index) => (
                                 <option key={index} value={item.id}>
                                   {item.name_th}
                                 </option>
@@ -466,7 +511,8 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={getDatafromDBD ? getDatafromDBD.zipcode : ""}
+                              onChange={handleInputChange("zipcode")}
+                              // value={getDatafromDBD ? getDatafromDBD.telephoneNo : ""}
                             />
                           </div>
                         </div>
@@ -477,7 +523,8 @@ export const ForeignLabor = () => {
                               type="text"
                               className="form-control"
                               placeholder=""
-                              value={getDatafromDBD ? getDatafromDBD.telephoneNo : ""}
+                              onChange={handleInputChange("telephoneNo")}
+                              // value={getDatafromDBD ? getDatafromDBD.telephoneNo : ""}
                             />
                           </div>
                         </div>
@@ -692,12 +739,7 @@ export const ForeignLabor = () => {
                       <button
                         type="button"
                         className="btn btn-success btn-label right ms-auto nexttab nexttab"
-                        onClick={() => {
-                          toggleArrowTab(activeArrowTab + 1);
-                          {
-                            onNextStep1();
-                          }
-                        }}
+                        onClick={() => {toggleArrowTab(activeArrowTab + 1);{onNextStep1();}}}
                       >
                         <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>
                         ถัดไป
